@@ -1,0 +1,38 @@
+* {
+    background-color: #c267ec;
+}
+
+h1 {
+    color: black;
+    font-size: 8em;
+    padding-left: 30%;
+}
+
+button {
+    color: white;
+    background-color: rgb(95, 94, 94);
+    padding: 5%;
+    border-radius: 20px;
+    border-color: #5e0f83;
+}
+
+button:hover {
+    color: rgb(95, 94, 94);
+    background: white;
+}
+
+[class *= "col-"] {
+    float: left;
+    padding: 5px;
+}
+
+.col-1 {width: 100%;}
+
+.col-2 {width: 49%;}
+
+.col-3 {width: 49%;}
+
+@media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape) {
+    .col-2 {width: 100%;}
+    .col-3 {width: 100%;}
+}
