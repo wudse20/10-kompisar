@@ -26,7 +26,7 @@ let length = 0;
 
 function swapPage(path) 
 {
-    location.replace(path);
+    window.location = path;
 }
 
 function generateRandomNumber(max) 
