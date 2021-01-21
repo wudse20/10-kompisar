@@ -2,6 +2,7 @@
 let questions = [];
 let count = 0;
 let correct = 0;
+let length;
 
 
 function swapPage(path) {
@@ -12,7 +13,7 @@ function generateRandomNumber() {
     return Math.floor(Math.random() * 10) + 1;
 }
 
-function init(length) {
+function init(_length) {
     let r1 = document.getElementById("row-1");
     let r2 = document.getElementById("row-2");
     let r3 = document.getElementById("row-3");
@@ -24,10 +25,12 @@ function init(length) {
     questions = [];
     count = 0;
     correct = 0;
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i < _length; i++) {
         questions.push(generateRandomNumber());
         console.log(questions[i]);
     }
+
+    length = _length;
 
     document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count];
 }
@@ -36,10 +39,17 @@ function submitAnswer() {
     let input = document.getElementById("inp");
     let value = parseInt(input.value);
 
+    tenBuddies(value);
+    
+    input.value = "";
+}
+
+function tenBuddies(value)
+{
     if (!isNaN(value) && value == (10 - questions[count]))
         correct++;
     
-    if (++count < 10) {
+    if (++count < length) {
         document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count];
     } else {
         let r1 = document.getElementById("row-1");
@@ -53,5 +63,4 @@ function submitAnswer() {
         alert("Du fick: " + correct + " rätt av 10!");
     }
 
-    input.value = "";
 }
