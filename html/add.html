@@ -7,8 +7,15 @@
     </head>
     <body id="add">
         <script src="../javascript/game.js"></script>
+        <script lang="js">
+            function swapPage(path) 
+            {
+                window.location = path;
+            }
+        </script>
         <div class="row-1" id="row-1">
-            <button onclick="initAddition(10, 10)">Starta</button>
+            <button onclick="initAddition(10, 10)">Starta Spelet</button>
+            <button onclick="swapPage('.\\index.html')">Tillbaka till startsida</button>
         </div>
         <div class="row-2" id="row-2">
             <h2 id="question">APA</h2>
