@@ -23,6 +23,7 @@ let questions = [];
 let count = 0;
 let correct = 0;
 let length = 0;
+let isTenBuddies = true;
 
 function generateRandomNumber(max) 
 {
@@ -32,7 +33,8 @@ function generateRandomNumber(max)
 function initTenBuddies(_length) 
 {
     length = _length;
-
+    isTenBuddies = true;
+    
     let r1 = document.getElementById("row-1");
     let r2 = document.getElementById("row-2");
     let r3 = document.getElementById("row-3");
@@ -58,6 +60,7 @@ function initTenBuddies(_length)
 function initAddition(_length, max)
 {
     length = _length;
+    isTenBuddies = false;
 
     let r1 = document.getElementById("row-1");
     let r2 = document.getElementById("row-2");
@@ -84,7 +87,7 @@ function initAddition(_length, max)
     document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count].toString();
 }
 
-function submitAnswer(isTenBuddies)
+function submitAnswer()
 {
     let input = document.getElementById("inp");
     let value = parseInt(input.value);
@@ -141,4 +144,13 @@ function tenBuddies(value)
 
         alert("Du fick: " + correct + " rätt av 10!");
     }
+}
+
+window.onload = function () {
+    let input = document.getElementById("inp");
+    input.addEventListener("keyup", function (event) {
+        console.log(event.keyCode);
+        if (event.keyCode == 13)
+            submitAnswer();
+    });
 }
