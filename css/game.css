@@ -1,4 +1,8 @@
-* {
+#ten {
+    background-color: fuchsia;
+}
+
+#add {
     background-color: teal;
 }
 
@@ -6,6 +10,8 @@ button {
     color: white;
     background-color: rgb(95, 94, 94);
     padding: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
     border-radius: 20px;
     border-color: #5e0f83;
 }
@@ -21,15 +27,9 @@ input {
 }
 
 [class *= "col-"] {
-    float: left;
-    padding: 5px;
+    padding: 2%;
+    width: 100%;
 }
-
-.col-1 {width: 49%;}
-
-.col-2 {width: 49%;}
-
-.col-3 {width: 49%;}
 
 .row-2 {display: none;}
 
