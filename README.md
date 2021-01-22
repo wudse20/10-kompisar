@@ -1,3 +1,3 @@
 # 10-kompisar
 
-A quick little game, for my sister, that test the 10-kompisar.
+A quick little math game, for my sister.
