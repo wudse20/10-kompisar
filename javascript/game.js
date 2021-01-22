@@ -24,11 +24,6 @@ let count = 0;
 let correct = 0;
 let length = 0;
 
-function swapPage(path) 
-{
-    window.location = path;
-}
-
 function generateRandomNumber(max) 
 {
     return Math.floor(Math.random() * max);
@@ -146,5 +141,4 @@ function tenBuddies(value)
 
         alert("Du fick: " + correct + " rätt av 10!");
     }
-
 }

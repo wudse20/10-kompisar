@@ -1,0 +1,46 @@
+* {
+    background-color: deeppink;
+}
+
+h1 {
+    text-align: center;
+    font-family: sans-serif;
+    color: black;
+}
+
+.row-2 .col-1 p {
+    font-family: sans-serif;
+    font-size: 1.25em;
+    font-weight: 300;
+    color: black;
+}
+
+.radio {
+    font-size: 1.25em;
+    font-family: sans-serif;
+}
+
+.radio label {
+    padding-bottom: 10%;
+}
+
+button {
+    color: white;
+    background-color: rgb(95, 94, 94);
+    padding: 5%;
+    padding-left: 10%;
+    padding-right: 10%;
+    border-radius: 20px;
+    border-color: #5e0f83;
+    font-size: 1.25em;
+}
+
+button:hover {
+    color: rgb(95, 94, 94);
+    background: white;
+}
+
+[class *= "col-"] {
+    padding: 2%;
+    width: 100%;
+}

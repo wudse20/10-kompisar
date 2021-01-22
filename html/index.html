@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>10 - kompisar</title>
+        <title>Starta Spelet</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="../css/main.css">
+        <link rel="stylesheet" type="text/css" href="../css/start.css">
     </head>
     <body>
-        <script src="../javascript/main.js"></script>
+        <script src="../javascript/start.js"></script>
         <div class="row-1">
-            <div class = "col-1">
-                <h1>10 - kompisar</h1>
+            <div class="col-1">
+                <h1>Starta 10-kompisar</h1>
             </div>
         </div>
         <div class="row-2">
-            <div class = "col-1">
-                <button onclick="swapPage('.\\10-10.html')">10 stycken 10-kompisar</button>
+            <div class="col-1">
+                <p>Vad vill du spela för spel?</p>
+                <form class="radio">
+                    <input type="radio" id="10" name="game" checked="checked">
+                    <label for="tenbuddies">10 - Kompisar</label>
+                    <br>
+                    <input type="radio" id="add" name="game">
+                    <label for="tenbuddies">Addition</label>
+                </form>
             </div>
-            <div class = "col-2">
-                <button onclick="swapPage('.\\10-20.html')">20 stycken 10-kompisar</button>
-            </div>
-            <div class = "col-3">
-                <button onclick="swapPage('.\\add-10.html')">10 stycken additioner</button>
+            <div class="col-2">
+                <button onclick="startGame()">Starta</button>
             </div>
         </div>
     </body>
