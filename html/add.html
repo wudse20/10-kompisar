@@ -7,6 +7,7 @@
     </head>
     <body id="add">
         <script src="../javascript/game.js"></script>
+        <script src="../javascript/addition.js"></script>
         <script lang="js">
             function swapPage(path) 
             {
@@ -14,7 +15,7 @@
             }
         </script>
         <div class="row-1" id="row-1">
-            <button onclick="initAddition(10, 10)">Starta Spelet</button>
+            <button onclick="init(10, 10)">Starta Spelet</button>
             <button onclick="swapPage('.\\index.html')">Tillbaka till startsida</button>
         </div>
         <div class="row-2" id="row-2">
@@ -25,7 +26,7 @@
                 <input type="text" id="inp" value="">
             </div>
             <div class="col-2">
-                <button onclick="submitAnswer(false)">Svara</button>
+                <button onclick="submitAnswer()">Svara</button>
             </div>
         </div>
     </body>
