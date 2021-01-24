@@ -28,7 +28,7 @@ function init(_length)
     }
 
 
-    document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count];
+    document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": Tiokompis till: " + questions[count];
 }
 
 
@@ -48,7 +48,7 @@ function tenBuddies(value)
     
     if (++count < length)
     {
-        document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count];
+        document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": Tiokompis till: " + questions[count];
     }
     else
     {

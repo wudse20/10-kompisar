@@ -42,15 +42,15 @@ function init(_length, max)
 
     for (let i = 0; i < _length; i++) 
     {
-        let i1 = generateRandomNumber(max);
-        let i2 = generateRandomNumber(max);
-        let ans = i1 + i2;
+        let i1 = generateRandomNumber(+max);
+        let i2 = generateRandomNumber(+max);
+        let ans = +i1 + +i2;
         console.log(ans);
-        questions.push(new Question(+i1, ans));
+        questions.push(new Question(+i1, +ans));
         console.log(questions[i].toString());    
     }
 
-    document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count].toString();
+    document.getElementById("question").innerHTML = "Fråga " + (+count + 1) + ": " + questions[count].toString();
 }
 
 
