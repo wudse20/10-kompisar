@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Subtraktion</title>
+        <link rel="stylesheet" type="text/css" href="../css/game.css">
+    </head>
+    <body id="sub">
+        <script src="../javascript/game.js"></script>
+        <script src="../javascript/subtraction.js"></script>
+        <script lang="js">
+            function swapPage(path) 
+            {
+                window.location = path;
+            }
+        </script>
+        <div class="row-1" id="row-1">
+            <button onclick="init(10, 10)">Starta Spelet</button>
+            <button onclick="swapPage('..\\index.html')">Tillbaka till startsida</button>
+        </div>
+        <div class="row-2" id="row-2">
+            <h2 id="question">APA</h2>
+        </div>
+        <div class="row-3" id="row-3">
+            <div class="col-1">
+                <input type="text" id="inp" value="">
+            </div>
+            <div class="col-2">
+                <button onclick="submitAnswer()">Svara</button>
+            </div>
+        </div>
+    </body>
+</html>
