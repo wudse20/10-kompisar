@@ -89,7 +89,7 @@ function sub(value) {
         r3.style.display = "none";
         r4.style.display = "block";
         
-        let result = "Resultat: (" + correct + " av 10 rätt)"
+        let result = "Resultat: (" + correct + " av 10 rätt<br>"
         result += "Tid: " + endTimer() + " sekunder";
         for (let i = 0; i < questions.length; i++) {
             result += "<br>" + (i + 1) + ": " + questions[i].toString();

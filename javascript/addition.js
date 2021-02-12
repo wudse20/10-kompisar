@@ -57,6 +57,7 @@ function init(_length) {
     for (let i = 0; i < _length; i++) {
         let i1 = generateRandomRange(1, +max);
         let itemp = +max - +i1
+
         // Sleep to get more deversified random numbers
         sleep(10);
         let i2 = generateRandomRange(1, +itemp);
@@ -98,7 +99,7 @@ function addition(value)
         r3.style.display = "none";
         r4.style.display = "block";
         
-        let result = "Resultat: (" + correct + " av 10 rätt)"
+        let result = "Resultat: (" + correct + " av 10 rätt)<br>"
         result += "Tid: " + endTimer() + " sekunder";
         for (let i = 0; i < questions.length; i++) {
             result += "<br>" + (i + 1) + ": " + questions[i].toString();
@@ -116,4 +117,6 @@ window.onload = function () {
         if (event.keyCode == submit)
             submitAnswer();
     });
+    
+    document.getElementById("res").style.color = "black";
 }
