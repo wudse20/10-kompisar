@@ -28,13 +28,22 @@ let correct = 0;
 let length = 0;
 let submit = 13;
 
-function init(_length, max) {
+function init(_length) {
     length = _length;
+    let max = 0;
 
     let r1 = document.getElementById("row-1");
     let r2 = document.getElementById("row-2");
     let r3 = document.getElementById("row-3");
     let r4 = document.getElementById("row-4");
+
+    let ten = document.getElementById("max10");
+    let twenty = document.getElementById("max20");
+
+    if (ten.checked)
+        max = 10;
+    else if (twenty.checked)
+        max = 20;
 
     r1.style.display = "none";
     r2.style.display = "block";
@@ -48,11 +57,13 @@ function init(_length, max) {
     for (let i = 0; i < _length; i++) {
         let i1 = generateRandomRange(1, +max);
         let itemp = +max - +i1
+        // Sleep to get more deversified random numbers
+        sleep(10);
         let i2 = generateRandomRange(1, +itemp);
         let ans = +i1 + +i2;
         console.log("Generated: " + i1 + " + " + i2 + " = " + ans);
         questions.push(new Question(+i1, +ans));
-        console.log(questions[i].toString());    
+        console.log(questions[i].toString());
     }
 
     document.getElementById("question").innerHTML = "Fråga " + (+count + 1) + ": " + questions[count].toString();

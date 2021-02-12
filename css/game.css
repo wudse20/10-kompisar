@@ -35,6 +35,11 @@ input {
     width: 100%;
 }
 
+.row-1 label, p {
+    font-family: sans-serif;
+    font-size: 1.25em;
+}
+
 .row-2 {display: none;}
 
 .row-3 {display: none;}

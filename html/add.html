@@ -14,8 +14,23 @@
                 window.location = path;
             }
         </script>
+
+        <div class="row-1">
+            <div class="col-1">
+                <p>Ange max summa för spelet?</p>
+                <form class="radio">
+                    <input type="radio" id="max10" name="addMax" checked="checked">
+                    <label for="tenbuddies">Max summa: 10</label>
+                    <br>
+                    <input type="radio" id="max20" name="addMax">
+                    <label for="tenbuddies">Max summa: 20</label>
+                    <br>
+                </form>
+            </div>
+        </div>
+
         <div class="row-1" id="row-1">
-            <button onclick="init(10, 10)">Starta Spelet</button>
+            <button onclick="init(10)">Starta Spelet</button>
             <button onclick="swapPage('..\\index.html')">Tillbaka till startsida</button>
         </div>
         <div class="row-2" id="row-2">

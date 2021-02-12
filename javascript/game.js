@@ -19,3 +19,11 @@ function endTimer() {
     let diff = timer - d.getTime();
     return Math.abs(Math.floor(diff / 1000 % 60));
 }
+
+function sleep(millis)
+{
+    let start_time = new Date();
+    let time_now = null;
+    do { time_now = new Date(); }
+    while(time_now-start_time < millis);
+}
