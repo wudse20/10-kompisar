@@ -71,7 +71,7 @@ function submitAnswer() {
 }
 
 function sub(value) {
-    if (!isNaN(value) && questions[count].checkAnswer(parseInt(value)))
+    if (questions[count].checkAnswer(parseInt(value)))
         correct++;
     
     if (++count < length) {

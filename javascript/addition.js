@@ -67,7 +67,7 @@ function submitAnswer()
 
 function addition(value)
 {
-    if (!isNaN(value) && questions[count].isCorrect(value))
+    if (questions[count].isCorrect(value))
         correct++;
     
     if (++count < length) {
