@@ -81,7 +81,7 @@ function sub(value) {
         let r2 = document.getElementById("row-2");
         let r3 = document.getElementById("row-3");
         let r4 = document.getElementById("row-4");
-        let txt = document.getElementById("res")
+        let txt = document.getElementById("res");
 
         r1.style.display = "block";
         r2.style.display = "none";
@@ -94,7 +94,6 @@ function sub(value) {
         }
         
         txt.innerHTML = result;
-        
     }
 }
 
