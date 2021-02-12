@@ -26,6 +26,7 @@ let questions = [];
 let count = 0;
 let correct = 0;
 let length = 0;
+let submit = 13;
 
 function init(_length, max) {
     length = _length;
@@ -45,10 +46,11 @@ function init(_length, max) {
     count = 0;
 
     for (let i = 0; i < _length; i++) {
-        let i1 = generateRandomNumber(+max);
-        let i2 = generateRandomNumber(+max);
+        let i1 = generateRandomRange(1, +max);
+        let itemp = +max - +i1
+        let i2 = generateRandomRange(1, +itemp);
         let ans = +i1 + +i2;
-        console.log(ans);
+        console.log("Generated: " + i1 + " + " + i2 + " = " + ans);
         questions.push(new Question(+i1, +ans));
         console.log(questions[i].toString());    
     }
@@ -98,7 +100,7 @@ window.onload = function () {
     let input = document.getElementById("inp");
     input.addEventListener("keyup", function (event) {
         console.log(event.keyCode);
-        if (event.keyCode == 13)
+        if (event.keyCode == submit)
             submitAnswer();
     });
 }
