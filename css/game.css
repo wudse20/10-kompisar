@@ -45,3 +45,15 @@ input {
     font-weight: 200;
     font-size: 2em;
 }
+
+footer {
+    margin-top: 20%
+}
+
+footer p{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: .75em;
+    margin-top: 0%;
+    padding-top: 0px;
+}

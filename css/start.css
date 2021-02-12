@@ -44,3 +44,15 @@ button:hover {
     padding: 2%;
     width: 100%;
 }
+
+footer {
+    margin-top: 10%
+}
+
+footer p{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: .75em;
+    margin-top: 0%;
+    padding-top: 0px;
+}
