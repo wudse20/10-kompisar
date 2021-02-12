@@ -7,7 +7,7 @@ class Question {
     }
     
     checkAnswer(answer) {
-        this.ans = answer;
+        this.ans = (isNaN(answer)) ? -1 : answer;
         return !isNaN(answer) && (parseInt(this.i1) - parseInt(this.i2) === parseInt(answer));
     }
     
