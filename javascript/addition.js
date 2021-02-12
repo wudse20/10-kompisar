@@ -105,4 +105,6 @@ window.onload = function () {
         if (event.keyCode == submit)
             submitAnswer();
     });
+    
+    document.getElementById("res").style.color = "black";
 }
