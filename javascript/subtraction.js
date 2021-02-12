@@ -1,24 +1,4 @@
 "use strict";
-class Question {
-    constructor(i1, i2) {
-        this.i1 = i1;
-        this.i2 = i2;
-        this.ans = NaN;
-    }
-    
-    checkAnswer(answer) {
-        this.ans = (isNaN(answer)) ? -1 : answer;
-        return !isNaN(answer) && (parseInt(this.i1) - parseInt(this.i2) === parseInt(answer));
-    }
-    
-    toString() {
-        let text = isNaN(this.ans) ? this.i1 + " - " + this.i2 + " = _" :
-                                this.i1 + " - " + this.i2 + " = " + (parseInt(this.i1) - parseInt(this.i2)) +
-                                (this.checkAnswer(this.ans) ? ": Rätt" : ": Fel");
-        return text;
-    }
-}
-
 let questions = [];
 let count = 0;
 let correct = 0;
@@ -55,7 +35,7 @@ function init(_length, max) {
         }
         
         console.log(i1, " - ", i2);
-        questions.push(new Question(parseInt(i1), parseInt(i2)));
+        questions.push(new SubQuestion(parseInt(i1), parseInt(i2)));
         console.log(questions[i].toString());    
     }
 

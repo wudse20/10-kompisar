@@ -1,24 +1,4 @@
 "use strict";
-
-class Question {
-    constructor(n1) {
-        this.n1 = n1;
-        this.ans = NaN;
-    }
-    
-    checkAnswer(answer) {
-        this.ans = (isNaN(answer)) ? -1 : answer;
-        return !isNaN(+answer) && (10 - +answer === +this.n1);
-    }
-    
-    toString() {
-        let text = isNaN(this.ans) ? "Tiokompis till " + this.n1 + " är _" :
-                                     "Tiokompis till " + this.n1 + " är " + 
-                                     (10 - +this.n1) + (this.checkAnswer(this.ans) ? ": Rätt" : ": Fel");
-        return text;
-    }
-}
-
 let questions = [];
 let count = 0;
 let correct = 0;
@@ -42,7 +22,7 @@ function init(_length) {
     correct = 0;
     for (let i = 0; i < _length; i++) {
         let number = generateRandomNumber(10) + 1;
-        questions.push(new Question(number));
+        questions.push(new TenBuddiesQuestion(number));
         console.log(questions[i]);
     }
 
