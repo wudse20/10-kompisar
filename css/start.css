@@ -1,5 +1,5 @@
 * {
-    background-color: deeppink;
+    background-color: #a446d4;
 }
 
 h1 {
@@ -55,4 +55,9 @@ footer p{
     font-size: .75em;
     margin-top: 0%;
     padding-top: 0px;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }
