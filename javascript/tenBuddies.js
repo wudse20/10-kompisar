@@ -48,6 +48,7 @@ function init(_length) {
 
 
     document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count].toString();
+    startTimer();
 }
 
 
@@ -78,6 +79,7 @@ function tenBuddies(value) {
         r4.style.display = "block";
 
         let result = "Resultat: (" + correct + " av 10 rätt)"
+        result += "Tid: " + endTimer() + " sekunder";
         for (let i = 0; i < questions.length; i++) {
             result += "<br>" + (i + 1) + ": " + questions[i].toString();
         }
