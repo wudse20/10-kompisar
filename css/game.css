@@ -38,3 +38,10 @@ input {
 .row-2 {display: none;}
 
 .row-3 {display: none;}
+
+.row-4 {
+    color: white;
+    font-family: sans-serif;
+    font-weight: 200;
+    font-size: 2em;
+}
