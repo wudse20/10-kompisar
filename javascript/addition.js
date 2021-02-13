@@ -53,8 +53,8 @@ function init(_length) {
 
 function enableRadioButtons(enable)
 {
-    var radioButtons = document.getElementById("modeMax");
-    for(var i=0; i < radioButtons.length; i++) {
+    let radioButtons = document.getElementById("modeMax");
+    for(let i=0; i < radioButtons.length; i++) {
        console.log ("DSK DSK DSK i=" + i)
        radioButtons[i].disabled = !enable;
     }
