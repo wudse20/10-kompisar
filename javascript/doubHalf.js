@@ -1,8 +1,8 @@
 "use strict";
 let questions = [];
+let length = 0;
 let count = 0;
 let correct = 0;
-let length = 0;
 
 function init(_length, max) {
     length = _length;
@@ -21,40 +21,36 @@ function init(_length, max) {
     correct = 0;
     count = 0;
 
-    for (let i = 0; i < _length; i++) {
-        let i1 = generateRandomNumber(+max - 1) + 1;
-        let i2 = generateRandomNumber(+max);
-        
-        while(parseInt(i2) >= parseInt(i1)) {
-            if (+i1 == 0 || +i1 == 1) {
-                i2 = 0;
-                break;
-            }
-            
-            i2 = generateRandomNumber(+max);
-        }
-        
-        console.log(i1, " - ", i2);
-        questions.push(new SubQuestion(parseInt(i1), parseInt(i2)));
-        console.log(questions[i].toString());    
+    for (let i = 0; i < max; i++) {
+       if (i % 2 === 0) {
+           let num = generateRandomNumber(+max + 1);
+
+           do { num = generateRandomNumber(max); }
+           while(num % 2 != 0);
+
+           questions.push(new HalfQuestion(+num));
+       } else {
+           let num = generateRandomNumber(+max / 2);
+           questions.push(new DoubleQuestion(+num));
+       }
     }
 
+    console.log(questions);
     document.getElementById("question").innerHTML = "Fråga " + (+count + 1) + ": " + questions[count].toString();
     startTimer();
 }
 
-
 function submitAnswer() {
     let input = document.getElementById("inp");
     let value = parseInt(input.value);
-    sub(value);
+    check(value);
     input.value = "";
 }
 
-function sub(value) {
-    if (questions[count].checkAnswer(parseInt(value)))
+function check(value) {
+    if (questions[count].checkAnswer(value))
         correct++;
-    
+
     if (++count < length) {
         document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count].toString();
     } else {
@@ -68,17 +64,16 @@ function sub(value) {
         r2.style.display = "none";
         r3.style.display = "none";
         r4.style.display = "block";
-        
+
         let result = "Resultat: (" + correct + " av 10 rätt)<br>"
         result += "Tid: " + endTimer() + " sekunder";
         for (let i = 0; i < questions.length; i++) {
             result += "<br>" + (i + 1) + ": " + questions[i].toString();
         }
-        
+
         txt.innerHTML = result;
     }
 }
-
 
 window.onload = function () {
     let input = document.getElementById("inp");
