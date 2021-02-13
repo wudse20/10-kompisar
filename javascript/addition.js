@@ -40,6 +40,9 @@ function init(_length) {
     let ten = document.getElementById("max10");
     let twenty = document.getElementById("max20");
 
+    // Game started. Disable mode radio buttons
+    enableRadioButtons(false);
+
     if (ten.checked)
         max = 10;
     else if (twenty.checked)
@@ -71,6 +74,14 @@ function init(_length) {
     startTimer();
 }
 
+function enableRadioButtons(enable)
+{
+    var radioButtons = document.getElementById("modeMax");
+    for(var i=0; i < radioButtons.length; i++) {
+       console.log ("DSK DSK DSK i=" + i)
+       radioButtons[i].disabled = !enable;
+    }
+}
 
 function submitAnswer()
 {
@@ -106,6 +117,9 @@ function addition(value)
         }
         
         txt.innerHTML = result;
+
+        // Game finished. Enable mode radio buttons agin
+        enableRadioButtons(true);
     }
 }
 
