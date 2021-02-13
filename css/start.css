@@ -46,7 +46,7 @@ button:hover {
 }
 
 footer {
-    margin-top: 10%
+    margin-top: 100%
 }
 
 footer p{
@@ -60,4 +60,47 @@ footer p{
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+}
+
+input[type=radio] {
+    vertical-align: middle;
+}
+
+@media only screen and (max-width: 980px) {
+    [class *= "col-1"] {
+        width: 100%;
+    }
+
+    footer p {
+        font-size: 1.5em;
+    }
+
+    footer {
+        margin-top: 50%
+    }
+
+    label {
+        font-size: 2em;
+    }
+
+    .row-2 .col-1 p {
+        font-size: 3em;
+    }
+
+    button {
+        font-size: 3em;
+        padding: 10%;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    h1 {
+        font-size: 4em;
+    }
+
+    input[type=radio] {
+        transform: scale(2);
+        margin-bottom: 3%;
+        margin-right: 3%
+    }
 }

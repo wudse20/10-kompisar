@@ -2,34 +2,21 @@
 <html lang="sv">
     <head>
         <meta charset="utf-8">
-        <title>Addition</title>
+        <title>Dubbelt och hälften</title>
         <link rel="stylesheet" type="text/css" href="../css/game.css">
         <link rel="icon" type="image/png" href="../pictures/favicon.png">
     </head>
-    <body id="add">
+    <body id="doubHalf">
         <script src="../javascript/game.js"></script>
         <script src="../javascript/question.js"></script>
-        <script src="../javascript/addition.js"></script>
+        <script src="../javascript/doubHalf.js"></script>
         <script lang="js">
             function swapPage(path) {
                 window.location = path;
             }
         </script>
-        <div class="row-1">
-            <div class="col-1">
-                <p>Ange max summa för spelet?</p>
-                <form class="radio" id="modeMax">
-                    <input type="radio" id="max10" name="addMax" checked="checked">
-                    <label for="tenbuddies">Max summa: 10</label>
-                    <br>
-                    <input type="radio" id="max20" name="addMax">
-                    <label for="tenbuddies">Max summa: 20</label>
-                    <br>
-                </form>
-            </div>
-        </div>
         <div class="row-1" id="row-1">
-            <button onclick="init(10)">Starta Spelet</button>
+            <button onclick="init(10, 10)">Starta Spelet</button>
             <button onclick="swapPage('..\\index.html')">Tillbaka till startsida</button>
         </div>
         <div class="row-2" id="row-2">
@@ -43,7 +30,7 @@
                 <button onclick="submitAnswer()">Svara</button>
             </div>
         </div>
-        <div class="row-4" id="row-4">
+          <div class="row-4" id="row-4">
             <div class="col-1">
                 <p id="res"></p>
             </div>

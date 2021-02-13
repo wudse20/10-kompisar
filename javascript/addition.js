@@ -1,27 +1,4 @@
 "use strict";
-
-class Question {
-    constructor(i1, ans) {
-        this.i1 = i1;
-        this.ans = ans;
-        this.solved = false;
-        this.correct = false;
-    }
-
-    isCorrect(inp) {
-        this.solved = true;
-        this.correct = !isNaN(parseInt(inp)) && (inp + this.i1 == this.ans);
-        return this.correct;
-    }
-
-    toString() {
-        let text = this.solved ? this.i1 + " + " + (parseInt(this.ans) - parseInt(this.i1)) +
-                                 " = " + this.ans + (this.correct ? ": Rätt" : ": Fel") :
-                                 this.i1 + " + _ = " + this.ans;
-        return text;
-    }
-}
-
 let questions = [];
 let count = 0;
 let correct = 0;
@@ -66,7 +43,7 @@ function init(_length) {
         let i2 = generateRandomRange(1, +itemp);
         let ans = +i1 + +i2;
         console.log("Generated: " + i1 + " + " + i2 + " = " + ans);
-        questions.push(new Question(+i1, +ans));
+        questions.push(new AddQuestion(+i1, +ans));
         console.log(questions[i].toString());
     }
 
