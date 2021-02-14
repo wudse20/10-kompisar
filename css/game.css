@@ -93,8 +93,12 @@ html, body {
 }
 
 #time {
-    font-size: 1.5em;
-    font-weight: bold;
+    width: 50%;
+    height: 50%;
+}
+
+#timeLabel {
+    font-size: 1em;
 }
 
 @media only screen and (max-width: 980px) {
@@ -175,7 +179,8 @@ html, body {
     }
 
     #time {
-        font-size: 2em;
+        width: 25%;
+        height: 25%;
     }
 
     .row-3 .col-1 {
