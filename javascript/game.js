@@ -1,5 +1,7 @@
 "use strict";
-var timer = 0;
+let startTime = new Date();
+let elapsedTime = new Date();
+let interval = null;
 
 function generateRandomNumber(max) {
     return Math.floor(Math.random() * max);
@@ -9,15 +11,35 @@ function generateRandomRange(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
 }
  
+function formatTime(time) {
+    let min = time / (1000 * 60);
+    let mins = Math.floor(min);
+
+    let sec = (min - mins) * 60;
+    let secs = Math.floor(sec);
+
+    let hundred = (sec - secs) * 10;
+    let hundreds = Math.floor(hundred)
+
+    let res = mins.toString().padStart(2, "0") + ":" +
+              secs.toString().padStart(2, "0") + ":" +
+              hundreds.toString().padStart(2, "0");
+
+    return res;
+}
+
 function startTimer() {
-    let d = new Date();
-    timer = d.getTime();
+    document.getElementById("time").innerHTML = "Tid 00:00:00";
+    startTime = Date.now();
+    interval = setInterval(function time() {
+        elapsedTime = Date.now() - startTime;
+        document.getElementById("time").innerHTML = "Tid " + formatTime(elapsedTime);
+    }, 100);
 }
 
 function endTimer() {
-    let d = new Date();
-    let diff = timer - d.getTime();
-    return Math.abs(Math.floor(diff / 1000 % 60));
+    clearInterval(interval);
+    return formatTime(elapsedTime);
 }
 
 function sleep(millis)

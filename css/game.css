@@ -56,7 +56,7 @@ input {
 }
 
 footer {
-    margin-top: 20%
+    margin-top: 45%
 }
 
 footer p{
@@ -70,6 +70,31 @@ footer p{
 html, body {
     max-width: 100%;
     overflow-x: hidden;
+}
+
+.row-2 .col-1 {
+    width: 35%;
+    float: left;
+}
+
+.row-2 .col-2 {
+    width: 20%;
+    float: left;
+}
+
+.row-3 .col-1 {
+    width: 100%;
+    float: left;
+}
+
+.row-3 .col-2 {
+    width: 100%;
+    float: left;
+}
+
+#time {
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 980px) {
@@ -137,5 +162,29 @@ html, body {
 
     h2 {
         font-size: 4em;
+    }
+
+    .row-2 .col-1 {
+        width: 100%;
+        float: left;
+    }
+
+    .row-2 .col-2 {
+        width: 100%;
+        float: left;
+    }
+
+    #time {
+        font-size: 2em;
+    }
+
+    .row-3 .col-1 {
+        width: 100%;
+        float: left;
+    }
+
+    .row-3 .col-2 {
+        width: 100%;
+        float: left;
     }
 }

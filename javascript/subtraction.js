@@ -70,7 +70,7 @@ function sub(value) {
         r4.style.display = "block";
         
         let result = "Resultat: (" + correct + " av 10 rätt)<br>"
-        result += "Tid: " + endTimer() + " sekunder";
+        result += "Tid: " + endTimer();
         for (let i = 0; i < questions.length; i++) {
             result += "<br>" + (i + 1) + ": " + questions[i].toString();
         }
