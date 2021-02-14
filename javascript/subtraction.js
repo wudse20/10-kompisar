@@ -87,4 +87,6 @@ window.onload = function () {
         if (event.keyCode == 13)
             submitAnswer();
     });
+
+    document.getElementById("res").style.color = "black";
 }
