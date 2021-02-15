@@ -147,15 +147,28 @@ function drawClock(mins, secs, tens) {
     ctx.stroke();
 }
 
+function resizeCanvasToDisplaySize(canvas) {
+    // Lookup the size the browser is displaying the canvas in CSS pixels.
+    const displayWidth  = canvas.clientWidth;
+    const displayHeight = canvas.clientHeight;
+
+    // Check if the canvas is not the same size.
+    const needResize = canvas.width  !== displayWidth ||
+                       canvas.height !== displayHeight;
+
+    if (needResize) {
+      // Make the canvas the same size
+      canvas.width  = displayWidth;
+      canvas.height = displayHeight;
+    }
+
+    return needResize;
+  }
+
 function initCanvas() {
     canvas = document.getElementById("time");
     ctx = canvas.getContext("2d");
-
-    let dpr = window.devicePixelRatio || 1;
-    let rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
+    resizeCanvasToDisplaySize(canvas);
 }
 
 function sleep(millis) {
