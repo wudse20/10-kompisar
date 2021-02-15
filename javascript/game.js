@@ -61,7 +61,7 @@ function startTimer() {
     startTime = Date.now();
     interval = setInterval(function time() {
         elapsedTime = Date.now() - startTime;
-        document.getElementById("timeLabel").innerHTML = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tid " + formatTime(elapsedTime);
+        document.getElementById("timeLabel").innerHTML = "Tid " + formatTime(elapsedTime);
     }, 100);
 }
 
@@ -150,6 +150,12 @@ function drawClock(mins, secs, tens) {
 function initCanvas() {
     canvas = document.getElementById("time");
     ctx = canvas.getContext("2d");
+
+    let dpr = window.devicePixelRatio || 1;
+    let rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * dpr;
+    canvas.height = rect.height * dpr;
+    ctx.scale(dpr, dpr);
 }
 
 function sleep(millis) {

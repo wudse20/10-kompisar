@@ -95,10 +95,12 @@ html, body {
 #time {
     width: 50%;
     height: 50%;
+    margin-left: 25%;
 }
 
 #timeLabel {
     font-size: 1em;
+    text-align: center;
 }
 
 @media only screen and (max-width: 980px) {
@@ -181,10 +183,12 @@ html, body {
     #time {
         width: 25%;
         height: 25%;
+        margin-left: 37.5%;
     }
 
     #timeLabel {
-        font-size: 2em;
+        font-size: 3em;
+        text-align: center;
     }
 
     .row-3 .col-1 {
