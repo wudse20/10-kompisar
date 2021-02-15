@@ -183,6 +183,10 @@ html, body {
         height: 25%;
     }
 
+    #timeLabel {
+        font-size: 2em;
+    }
+
     .row-3 .col-1 {
         width: 100%;
         float: left;
