@@ -83,6 +83,10 @@ class DoubHalfQuestion {
         }
     }
 
+    clone() {
+        throw new Error("Method 'clone' must be implemented.");
+    }
+
     checkAnswer(ans) {
         throw new Error("Method 'checkAnswer' must be implemented.");
     }
@@ -95,6 +99,10 @@ class DoubHalfQuestion {
 class DoubleQuestion extends DoubHalfQuestion {
     constructor(i1) {
         super(i1);
+    }
+
+    clone() {
+        return new DoubleQuestion(this.i1);
     }
 
     checkAnswer(ans) {
@@ -113,6 +121,10 @@ class DoubleQuestion extends DoubHalfQuestion {
 class HalfQuestion extends DoubHalfQuestion {
     constructor(i1) {
         super(i1);
+    }
+
+    clone() {
+        return new HalfQuestion(this.i1);
     }
 
     checkAnswer(ans) {

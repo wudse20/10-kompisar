@@ -1,11 +1,11 @@
 "use strict";
 let questions = [];
-let length = 0;
+let errors = [];
+let errorMode = false;
 let count = 0;
 let correct = 0;
 
-function init(_length, max) {
-    length = _length;
+function init(length, max) {
 
     let r1 = document.getElementById("row-1");
     let r2 = document.getElementById("row-2");
@@ -17,25 +17,30 @@ function init(_length, max) {
     r3.style.display = "block";
     r4.style.display = "none";
 
-    questions = [];
     correct = 0;
     count = 0;
 
-    for (let i = 0; i < max; i++) {
-       if (i % 2 === 0) {
-           let num = generateRandomNumber(+max + 1);
+    if (!errorMode) {
+        questions = [];
 
-           do { num = generateRandomNumber(max); }
-           while(num % 2 != 0);
+        for (let i = 0; i < length; i++) {
+            if (i % 2 === 0) {
+                let num = generateRandomNumber(+max + 1);
 
-           questions.push(new HalfQuestion(+num));
-       } else {
-           let num = generateRandomNumber(+max / 2);
-           questions.push(new DoubleQuestion(+num));
-       }
+                do { num = generateRandomNumber(max); }
+                while(num % 2 != 0);
+
+                questions.push(new HalfQuestion(+num));
+            } else {
+                let num = generateRandomNumber(+max / 2);
+                questions.push(new DoubleQuestion(+num));
+            }
+        }
+    } else {
+        questions = errors;
+        errors = [];
     }
 
-    console.log(questions);
     document.getElementById("question").innerHTML = "Fråga " + (+count + 1) + ": " + questions[count].toString();
     startTimer();
 }
@@ -50,28 +55,45 @@ function submitAnswer() {
 function check(value) {
     if (questions[count].checkAnswer(value))
         correct++;
+    else
+        errors.push(questions[count].clone());
 
-    if (++count < length) {
+    if (++count < questions.length) {
         document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count].toString();
     } else {
-        let r1 = document.getElementById("row-1");
-        let r2 = document.getElementById("row-2");
-        let r3 = document.getElementById("row-3");
-        let r4 = document.getElementById("row-4");
-        let txt = document.getElementById("res");
+        endGame();
+    }
+}
 
-        r1.style.display = "block";
-        r2.style.display = "none";
-        r3.style.display = "none";
-        r4.style.display = "block";
+function endGame() {
+    let r1 = document.getElementById("row-1");
+    let r2 = document.getElementById("row-2");
+    let r3 = document.getElementById("row-3");
+    let r4 = document.getElementById("row-4");
+    let txt = document.getElementById("res");
 
-        let result = "Resultat: (" + correct + " av 10 rätt)<br>"
-        result += "Tid: " + endTimer();
-        for (let i = 0; i < questions.length; i++) {
-            result += "<br>" + (i + 1) + ": " + questions[i].toString();
-        }
+    r1.style.display = "block";
+    r2.style.display = "none";
+    r3.style.display = "none";
+    r4.style.display = "block";
 
-        txt.innerHTML = result;
+    let result = "Resultat: (" + correct + " av " + questions.length + " rätt)<br>"
+    result += "Tid: " + endTimer();
+    for (let i = 0; i < questions.length; i++) {
+        result += "<br>" + (i + 1) + ": " + questions[i].toString();
+    }
+
+    txt.innerHTML = result;
+
+    let btn = document.getElementById("btnStart");
+
+    if (errors.length != 0) {
+        let res = confirm("Vill du försöka igen med de som blev fel?");
+        btn.innerHTML = res ? "Försök igen" : "Stata spelet";
+        errorMode = res;
+    } else {
+        errorMode = false;
+        btn.innerHTML = "Starta spelet";
     }
 }
 
