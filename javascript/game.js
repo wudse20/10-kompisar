@@ -82,7 +82,7 @@ function toPosSec(sec, radius) {
     return toPosMin(sec, radius);
 }
 
-function drawClock(mins, secs, tens) {
+function drawClock(mins, secs) {
     let minuteColor = "#0000FF";
     let secondsColor = "#000000";
     let middle = new Pos(canvas.width / 2, canvas.height / 2);
@@ -161,8 +161,6 @@ function resizeCanvasToDisplaySize(canvas) {
       canvas.width  = displayWidth;
       canvas.height = displayHeight;
     }
-
-    return needResize;
   }
 
 function initCanvas() {

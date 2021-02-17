@@ -5,6 +5,10 @@ class TenBuddiesQuestion {
         this.ans = NaN;
     }
     
+    clone() {
+        return new TenBuddiesQuestion(this.n1);
+    }
+
     checkAnswer(answer) {
         this.ans = (isNaN(answer)) ? -1 : answer;
         return !isNaN(+answer) && (10 - +answer === +this.n1);
