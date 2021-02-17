@@ -30,7 +30,11 @@ class AddQuestion {
         this.correct = false;
     }
 
-    isCorrect(inp) {
+    clone() {
+        return new AddQuestion(this.i1, this.ans);
+    }
+
+    checkAnswer(inp) {
         this.solved = true;
         this.correct = !isNaN(parseInt(inp)) && (inp + this.i1 == this.ans);
         return this.correct;

@@ -122,7 +122,7 @@ function drawClock(mins, secs) {
     // Circle
     ctx.strokeStyle = "black";
     ctx.beginPath();
-    ctx.arc(middle.getX(), middle.getY(), canvas.width / 2 - 1, 0, Math.PI * 2);
+    ctx.arc(middle.getX(), middle.getY(), Math.max(canvas.width / 2 - 1, 0), 0, Math.PI * 2);
     ctx.stroke();
 
     // Lines
