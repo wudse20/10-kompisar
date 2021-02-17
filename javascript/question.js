@@ -54,6 +54,10 @@ class SubQuestion {
         this.i2 = i2;
         this.ans = NaN;
     }
+
+    clone() {
+        return new SubQuestion(this.i1, this.i2);
+    }
     
     checkAnswer(answer) {
         this.ans = (isNaN(answer)) ? -1 : answer;

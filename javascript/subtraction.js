@@ -1,12 +1,11 @@
 "use strict";
 let questions = [];
+let errors = [];
+let errorMode = false;
 let count = 0;
 let correct = 0;
-let length = 0;
 
-function init(_length, max) {
-    length = _length;
-
+function init(length, max) {
     let r1 = document.getElementById("row-1");
     let r2 = document.getElementById("row-2");
     let r3 = document.getElementById("row-3");
@@ -17,26 +16,31 @@ function init(_length, max) {
     r3.style.display = "block";
     r4.style.display = "none";
 
-    questions = [];
     correct = 0;
     count = 0;
 
-    for (let i = 0; i < _length; i++) {
-        let i1 = generateRandomNumber(+max - 1) + 1;
-        let i2 = generateRandomNumber(+max);
-        
-        while(parseInt(i2) >= parseInt(i1)) {
-            if (+i1 == 0 || +i1 == 1) {
-                i2 = 0;
-                break;
+    if (!errorMode) {
+        questions = [];
+        for (let i = 0; i < length; i++) {
+            let i1 = generateRandomNumber(+max - 1) + 1;
+            let i2 = generateRandomNumber(+max);
+
+            while(parseInt(i2) >= parseInt(i1)) {
+                if (+i1 == 0 || +i1 == 1) {
+                    i2 = 0;
+                    break;
+                }
+
+                i2 = generateRandomNumber(+max);
             }
-            
-            i2 = generateRandomNumber(+max);
+
+            console.log(i1, " - ", i2);
+            questions.push(new SubQuestion(parseInt(i1), parseInt(i2)));
+            console.log(questions[i].toString());
         }
-        
-        console.log(i1, " - ", i2);
-        questions.push(new SubQuestion(parseInt(i1), parseInt(i2)));
-        console.log(questions[i].toString());    
+    } else {
+        questions = errors;
+        errors = [];
     }
 
     document.getElementById("question").innerHTML = "Fråga " + (+count + 1) + ": " + questions[count].toString();
@@ -54,31 +58,47 @@ function submitAnswer() {
 function sub(value) {
     if (questions[count].checkAnswer(parseInt(value)))
         correct++;
+    else
+        errors.push(questions[count].clone());
     
-    if (++count < length) {
+    if (++count < questions.length) {
         document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count].toString();
     } else {
-        let r1 = document.getElementById("row-1");
-        let r2 = document.getElementById("row-2");
-        let r3 = document.getElementById("row-3");
-        let r4 = document.getElementById("row-4");
-        let txt = document.getElementById("res");
-
-        r1.style.display = "block";
-        r2.style.display = "none";
-        r3.style.display = "none";
-        r4.style.display = "block";
-        
-        let result = "Resultat: (" + correct + " av 10 rätt)<br>"
-        result += "Tid: " + endTimer();
-        for (let i = 0; i < questions.length; i++) {
-            result += "<br>" + (i + 1) + ": " + questions[i].toString();
-        }
-        
-        txt.innerHTML = result;
+        endGame();
     }
 }
 
+function endGame() {
+    let r1 = document.getElementById("row-1");
+    let r2 = document.getElementById("row-2");
+    let r3 = document.getElementById("row-3");
+    let r4 = document.getElementById("row-4");
+    let txt = document.getElementById("res");
+
+    r1.style.display = "block";
+    r2.style.display = "none";
+    r3.style.display = "none";
+    r4.style.display = "block";
+
+    let result = "Resultat: (" + correct + " av " + questions.length + " rätt)<br>"
+    result += "Tid: " + endTimer();
+    for (let i = 0; i < questions.length; i++) {
+        result += "<br>" + (i + 1) + ": " + questions[i].toString();
+    }
+
+    txt.innerHTML = result;
+
+    let btn = document.getElementById("btnStart");
+
+    if (errors.length != 0) {
+        let res = confirm("Vill du försöka igen med de som blev fel?");
+        btn.innerHTML = res ? "Försök igen" : "Stata spelet";
+        errorMode = res;
+    } else {
+        errorMode = false;
+        btn.innerHTML = "Starta spelet";
+    }
+}
 
 window.onload = function () {
     let input = document.getElementById("inp");
