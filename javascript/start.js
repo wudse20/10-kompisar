@@ -7,6 +7,7 @@ function startGame() {
     let add = document.getElementById("add");
     let sub = document.getElementById("sub");
     let doubHalf = document.getElementById("doubHalf");
+    let multiMode = document.getElementById("multiMode");
     
     if (ten.checked)
         swapPage(".\\html\\10Buddies.html");
@@ -16,6 +17,8 @@ function startGame() {
         swapPage(".\\html\\sub.html");
     else if (doubHalf.checked)
         swapPage(".\\html\\doubHalf.html");
+    else if (multiMode.checked)
+        swapPage(".\\html\\multiMode.html")
     else
         console.log("Wierd input form user");
 }

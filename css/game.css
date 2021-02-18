@@ -14,6 +14,10 @@
     background-color: deeppink;
 }
 
+#multiMode {
+    background-color: #ff7700;
+}
+
 button {
     color: white;
     background-color: rgb(95, 94, 94);
