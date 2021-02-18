@@ -22,10 +22,9 @@ function init(length) {
     if (!errorMode) {
         questions = [];
         errors = [];
+
         for (let i = 0; i < length; i++) {
-            let number = generateRandomNumber(10) + 1;
-            questions.push(new TenBuddiesQuestion(number));
-            console.log(questions[i]);
+            questions.push(new TenBuddiesQuestion().generate(10));
         }
     } else {
         questions = errors;

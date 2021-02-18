@@ -14,7 +14,7 @@ function init(length) {
     let r3 = document.getElementById("row-3");
     let r4 = document.getElementById("row-4");
 
-r1.style.display = "none";
+    r1.style.display = "none";
     r2.style.display = "block";
     r3.style.display = "block";
     r4.style.display = "none";
@@ -37,16 +37,7 @@ r1.style.display = "none";
         questions = [];
 
         for (let i = 0; i < length; i++) {
-            let i1 = generateRandomRange(1, +max);
-            let itemp = +max - +i1
-
-            // Sleep to get more deversified random numbers
-            sleep(10);
-            let i2 = generateRandomRange(1, +itemp);
-            let ans = +i1 + +i2;
-            console.log("Generated: " + i1 + " + " + i2 + " = " + ans);
-            questions.push(new AddQuestion(+i1, +ans));
-            console.log(questions[i].toString());
+            questions.push(new AddQuestion().generate(max));
         }
     } else {
         questions = errors;

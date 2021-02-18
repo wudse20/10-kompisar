@@ -21,22 +21,9 @@ function init(length, max) {
 
     if (!errorMode) {
         questions = [];
+
         for (let i = 0; i < length; i++) {
-            let i1 = generateRandomNumber(+max - 1) + 1;
-            let i2 = generateRandomNumber(+max);
-
-            while(parseInt(i2) >= parseInt(i1)) {
-                if (+i1 == 0 || +i1 == 1) {
-                    i2 = 0;
-                    break;
-                }
-
-                i2 = generateRandomNumber(+max);
-            }
-
-            console.log(i1, " - ", i2);
-            questions.push(new SubQuestion(parseInt(i1), parseInt(i2)));
-            console.log(questions[i].toString());
+            questions.push(new SubQuestion().generate(max));
         }
     } else {
         questions = errors;

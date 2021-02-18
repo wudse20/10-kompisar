@@ -1,13 +1,17 @@
 "use strict";
 class Question {
-    constructor(i1) {
+    constructor() {
         if (this.constructor == Question) {
             throw new Error("Abstract classes can't be instantiated.")
         } else {
-            this.i1 = +i1;
+            this.i1 = NaN;
             this.solved = false;
             this.correct = false;
         }
+    }
+
+    generate(max) {
+        throw new Error("Method 'generate' must be implemented.")
     }
 
     clone() {
@@ -24,20 +28,27 @@ class Question {
 }
 
 class TenBuddiesQuestion extends Question {
-    constructor(i1) {
-        super(i1)
+    constructor() {
+        super()
         this.ans = NaN;
+    }
+
+    generate(max) {
+        this.i1 = generateRandomNumber(max) + 1;
+        return this;
     }
     
     clone() {
-        return new TenBuddiesQuestion(this.i1);
+        let newObj = new TenBuddiesQuestion();
+        newObj.i1 = this.i1;
+        return newObj;
     }
 
     checkAnswer(answer) {
         this.ans = (isNaN(answer)) ? -1 : answer;
         return !isNaN(+answer) && (10 - +answer === +this.i1);
     }
-    
+
     toString() {
         let text = isNaN(this.ans) ? "Tiokompis till " + this.i1 + " är _" :
                                      "Tiokompis till " + this.i1 + " är " +
@@ -47,13 +58,28 @@ class TenBuddiesQuestion extends Question {
 }
 
 class AddQuestion extends Question {
-    constructor(i1, ans) {
-        super(i1);
-        this.ans = ans;
+    constructor() {
+        super();
+        this.ans = NaN;
+    }
+
+    generate(max) {
+        let i1 = generateRandomRange(1, +max);
+        let itemp = +max - +i1
+
+        // Sleep to get more deversified random numbers
+        sleep(10);
+        let i2 = generateRandomRange(1, +itemp);
+        this.ans = +i1 + +i2;
+        this.i1 = i1;
+        return this;
     }
 
     clone() {
-        return new AddQuestion(this.i1, this.ans);
+        let newObj = new AddQuestion(this.i1, this.ans);
+        newObj.i1 = this.i1;
+        newObj.ans = this.ans;
+        return newObj;
     }
 
     checkAnswer(inp) {
@@ -71,21 +97,46 @@ class AddQuestion extends Question {
 }
 
 class SubQuestion extends Question {
-    constructor(i1, i2) {
-        super(i1);
-        this.i2 = i2;
+    constructor() {
+        super();
+        this.i2 = NaN;
         this.ans = NaN;
     }
 
-    clone() {
-        return new SubQuestion(this.i1, this.i2);
+    generate(max) {
+        let i1 = generateRandomNumber(+max - 1) + 1;
+        let i2 = generateRandomNumber(+max);
+
+        while(parseInt(i2) >= parseInt(i1)) {
+            if (+i1 == 0) {
+                i2 = 0;
+                break;
+            } else if (+i1 == 1) {
+                i2 = generateRandomNumber(0, 1);
+                break;
+            }
+
+            i2 = generateRandomNumber(+max);
+        }
+
+        this.i1 = i1;
+        this.i2 = i2;
+
+        return this;
     }
-    
+
+    clone() {
+        let newObj = new SubQuestion();
+        newObj.i1 = this.i1;
+        newObj.i2 = this.i2;
+        return newObj;
+    }
+
     checkAnswer(answer) {
         this.ans = (isNaN(answer)) ? -1 : answer;
         return !isNaN(answer) && (parseInt(this.i1) - parseInt(this.i2) === parseInt(answer));
     }
-    
+
     toString() {
         let text = isNaN(this.ans) ? this.i1 + " - " + this.i2 + " = _" :
                                 this.i1 + " - " + this.i2 + " = " + (parseInt(this.i1) - parseInt(this.i2)) +
@@ -95,12 +146,19 @@ class SubQuestion extends Question {
 }
 
 class DoubleQuestion extends Question {
-    constructor(i1) {
-        super(i1);
+    constructor() {
+        super();
+    }
+
+    generate(max) {
+        this.i1 = generateRandomNumber(+max / 2);
+        return this;
     }
 
     clone() {
-        return new DoubleQuestion(this.i1);
+        let newObj = new DoubleQuestion();
+        newObj.i1 = this.i1;
+        return newObj;
     }
 
     checkAnswer(ans) {
@@ -117,12 +175,25 @@ class DoubleQuestion extends Question {
 }
 
 class HalfQuestion extends Question {
-    constructor(i1) {
-        super(i1);
+    constructor() {
+        super();
+    }
+
+    generate(max) {
+        let num = generateRandomNumber(+max + 1);
+
+        do { num = generateRandomNumber(max); }
+        while(num % 2 != 0);
+
+        this.i1 = num;
+
+        return this;
     }
 
     clone() {
-        return new HalfQuestion(this.i1);
+        let newObj = new HalfQuestion();
+        newObj.i1 = this.i1;
+        return newObj;
     }
 
     checkAnswer(ans) {

@@ -25,15 +25,9 @@ function init(length, max) {
 
         for (let i = 0; i < length; i++) {
             if (i % 2 === 0) {
-                let num = generateRandomNumber(+max + 1);
-
-                do { num = generateRandomNumber(max); }
-                while(num % 2 != 0);
-
-                questions.push(new HalfQuestion(+num));
+                questions.push(new HalfQuestion().generate(max));
             } else {
-                let num = generateRandomNumber(+max / 2);
-                questions.push(new DoubleQuestion(+num));
+                questions.push(new DoubleQuestion().generate(max));
             }
         }
     } else {
