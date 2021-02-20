@@ -115,10 +115,22 @@ input[type=checkbox] {
     transform: scale(2);
 }
 
-@media only screen and (max-width: 980px) {
+@media only screen and (max-width: 1280px) and (min-width: 960px) {
+    button:hover {
+        color: white;
+        background: rgb(95, 94, 94);
+    }
+}
+
+@media only screen and (max-width: 960px) {
     [class *= "col-1"] {
         width: 100%;
         padding: 3%;
+    }
+
+    button:hover {
+        color: white;
+        background: rgb(95, 94, 94);
     }
 
     footer p {
