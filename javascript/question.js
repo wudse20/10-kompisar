@@ -209,3 +209,93 @@ class HalfQuestion extends Question {
         return text;
     }
 }
+
+let m = new Map();
+m.set("A", true);
+m.set("B", false);
+m.set("C", true);
+m.set("D", true);
+m.set("E", true);
+m.set("F", false);
+m.set("G", false);
+m.set("H", true);
+m.set("I", true);
+m.set("J", false);
+m.set("K", true)
+m.set("L", false);
+m.set("M", true);
+m.set("N", false);
+m.set("O", true);
+m.set("P", false);
+m.set("Q", false);
+m.set("R", false);
+m.set("S", false);
+m.set("T", true);
+m.set("U", true);
+m.set("V", true);
+m.set("W", true);
+m.set("X", true);
+m.set("Y", true);
+m.set("Z", true);
+m.set("Å", true);
+m.set("Ä", true);
+m.set("Ö", true);
+m.set("a", false);
+m.set("b", false);
+m.set("c", true);
+m.set("d", false);
+m.set("e", false);
+m.set("f", false);
+m.set("g", false);
+m.set("h", false);
+m.set("i", true);
+m.set("j", false);
+m.set("k", false)
+m.set("l", true);
+m.set("m", true);
+m.set("n", false);
+m.set("o", true);
+m.set("p", false);
+m.set("q", false);
+m.set("r", false);
+m.set("s", false);
+m.set("t", false);
+m.set("u", false);
+m.set("v", true);
+m.set("w", true);
+m.set("x", true);
+m.set("y", false);
+m.set("z", true);
+m.set("å", false);
+m.set("ä", false);
+m.set("ö", true);
+
+const alphabet = "abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ";
+
+class SymetiryQuestion extends Question {
+    constructor() {
+        super();
+    }
+
+    generate(max) {
+        this.letter = alphabet[Math.floor(Math.random() * alphabet.length)];
+        return this;
+    }
+
+    clone() {
+        let newObj = new SymetiryQuestion();
+        newObj.letter = this.letter;
+        return newObj;
+    }
+
+    checkAnswer(ans) {
+        this.correct = ans == m.get(this.letter);
+        this.solved = true;
+        return this.correct;
+    }
+
+    toString() {
+        let string = "Är bokstaven: '" + this.letter + "' symetrisk?"
+        return string + ": " + (this.solved ? this.correct ? "Rätt" : "Fel" : "");
+    }
+}

@@ -14,6 +14,10 @@
     background-color: deeppink;
 }
 
+#sym {
+    background-color: hotpink;
+}
+
 #multiMode {
     background-color: #ff7700;
 }
@@ -107,6 +111,10 @@ html, body {
     text-align: center;
 }
 
+input[type=checkbox] {
+    transform: scale(2);
+}
+
 @media only screen and (max-width: 980px) {
     [class *= "col-1"] {
         width: 100%;
@@ -168,6 +176,10 @@ html, body {
         padding: 1.5%;
         line-height: 100%;
         font-size: 2em;
+    }
+
+    input[type=checkbox] {
+        transform: scale(5);
     }
 
     h2 {
