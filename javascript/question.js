@@ -296,6 +296,6 @@ class SymetiryQuestion extends Question {
 
     toString() {
         let string = "Är bokstaven: '" + this.letter + "' symetrisk?"
-        return string + ": " + (this.solved ? this.correct ? "Rätt" : "Fel" : "");
+        return string + (this.solved ? m.get(this.letter) ? " Ja" : " Nej" : "") + (this.solved ? this.correct ? ": Rätt" : ": Fel" : "");
     }
 }

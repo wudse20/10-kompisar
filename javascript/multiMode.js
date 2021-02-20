@@ -26,7 +26,7 @@ function init(length, max) {
         for (let i = 0; i < length; i++) {
             let num = generateRandomNumber(100);
 
-            switch (num % 5) {
+            switch (num % 6) {
                 case 0:
                     questions.push(new TenBuddiesQuestion().generate(max));
                     break;
@@ -42,6 +42,10 @@ function init(length, max) {
                 case 4:
                     questions.push(new DoubleQuestion().generate(max));
                     break;
+                case 5:
+                    // NaN since question type doesn't take a max value.
+                    questions.push(new SymetiryQuestion().generate(NaN));
+                    break;
             }
         }
     } else {
@@ -49,15 +53,33 @@ function init(length, max) {
         errors = [];
     }
 
+    swapInputType();
     document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count].toString();
 
     startTimer();
 }
 
+function swapInputType() {
+    let input = document.getElementById("inp");
+
+    if (questions[count] instanceof SymetiryQuestion) {
+        input.type = "checkbox";
+    } else {
+        input.type = "number";
+    }
+}
 
 function submitAnswer() {
     let input = document.getElementById("inp");
-    let value = parseInt(input.value);
+    let value = NaN;
+
+    if (questions[count] instanceof SymetiryQuestion) {
+        value = input.checked;
+        input.checked = false;
+    } else {
+        value = parseInt(input.value);
+    }
+
     multiMode(value);
     input.value = "";
 }
@@ -69,6 +91,7 @@ function multiMode(value) {
         errors.push(questions[count].clone());
 
     if (++count < questions.length) {
+        swapInputType();
         document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count].toString();
     } else {
         endGame();
