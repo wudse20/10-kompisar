@@ -332,12 +332,12 @@ class NeighbourQuestion extends Question {
     }
 
     toString() {
-        let txt = "Skriv in den saknade talgrannen: <br>";
+        let txt = "Skriv in den saknade talgrannen: ";
 
         txt += this.solved ? (+this.i1 - 1) + " " + this.i1 + " " + (+this.i1 + 1) :
-               this.showingNeighbour > this.i1 ? "_ " + this.i1 + " " + this.showingNeighbour :
-               this.showingNeighbour + " " + this.i1 + " _";
+               this.showingNeighbour > this.i1 ? "<br>_ " + this.i1 + " " + this.showingNeighbour :
+               "<br>" + this.showingNeighbour + " " + this.i1 + " _";
 
-        return txt + "<br>";
+        return txt;
     }
 }

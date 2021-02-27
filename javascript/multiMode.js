@@ -26,7 +26,7 @@ function init(length, max) {
         for (let i = 0; i < length; i++) {
             let num = generateRandomNumber(100);
 
-            switch (num % 6) {
+            switch (num % 7) {
                 case 0:
                     questions.push(new TenBuddiesQuestion().generate(max));
                     break;
@@ -45,6 +45,9 @@ function init(length, max) {
                 case 5:
                     // NaN since question type doesn't take a max value.
                     questions.push(new SymetiryQuestion().generate(NaN));
+                    break;
+                case 6:
+                    questions.push(new NeighbourQuestion().generate(100));
                     break;
             }
         }
