@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="utf-8">
+        <title>Talgrannar</title>
+        <link rel="stylesheet" type="text/css" href="../css/game.css">
+        <link rel="icon" type="image/png" href="../pictures/favicon.png">
+    </head>
+    <body id="neighbours">
+        <script src="../javascript/timer.js"></script>
+        <script src="../javascript/game.js"></script>
+        <script src="../javascript/question.js"></script>
+        <script src="../javascript/neighbours.js"></script>
+        <script lang="js">
+            function swapPage(path) {
+                window.location = path;
+            }
+        </script>
+        <div class="row-1" id="row-1">
+            <button onclick="init(10, 100)" id="btnStart">Starta Spelet</button>
+            <button onclick="swapPage('..\\index.html')">Tillbaka till startsida</button>
+        </div>
+        <div class="row-2" id="row-2">
+            <div class="col-1">
+                <h2 id="question">APA</h2>
+            </div>
+            <div class="col-2">
+                <canvas id="time" width="100" height="100">Canvas not supported by browser</canvas>
+                <p id="timeLabel">Tid 00:00:00</p>
+            </div>
+        </div>
+        <div class="row-3" id="row-3">
+            <div class="col-1">
+                <input pattern="[0-9]*" type="number" step="1" id="inp" value="">
+            </div>
+            <div class="col-2">
+                <button onclick="submitAnswer()">Svara</button>
+            </div>
+        </div>
+          <div class="row-4" id="row-4">
+            <div class="col-1">
+                <p id="res"></p>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <p>Ansvarig utgivare: Anton Skorup</p>
+        <p><a href="https://github.com/wudse20/10-kompisar">Source code</a>&emsp;<a href="mailto:anton@skorup.se">anton@skorup.se</a></p>
+    </footer>
+</html>

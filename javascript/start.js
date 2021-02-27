@@ -8,6 +8,7 @@ function startGame() {
     let sub = document.getElementById("sub");
     let doubHalf = document.getElementById("doubHalf");
     let sym = document.getElementById("sym");
+    let neighbours = document.getElementById("neighbours");
     let multiMode = document.getElementById("multiMode");
     
     if (ten.checked)
@@ -20,8 +21,10 @@ function startGame() {
         swapPage(".\\html\\doubHalf.html");
     else if (sym.checked)
         swapPage(".\\html\\sym.html");
+    else if (neighbours.checked)
+        swapPage(".\\html\\neighbours.html");
     else if (multiMode.checked)
-        swapPage(".\\html\\multiMode.html")
+        swapPage(".\\html\\multiMode.html");
     else
         console.log("Wierd input form user");
 }

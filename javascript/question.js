@@ -299,3 +299,45 @@ class SymetiryQuestion extends Question {
         return string + (this.solved ? m.get(this.letter) ? " Ja" : " Nej" : "") + (this.solved ? this.correct ? ": Rätt" : ": Fel" : "");
     }
 }
+
+class NeighbourQuestion extends Question {
+    constructor() {
+        super();
+        this.showingNeighbour = 0;
+        this.ans = NaN;
+    }
+
+    generate(max) {
+        this.i1 = generateRandomRange(1, max);
+        this.showingNeighbour = (Math.random() < 0.5) ? this.i1 + 1 : this.i1 - 1;
+        this.ans = (this.showingNeighbour > this.i1) ? this.i1 - 1 : this.i1 + 1;
+
+        return this;
+    }
+
+    clone() {
+        let newObj = new NeighbourQuestion();
+        newObj.i1 = this.i1;
+        newObj.showingNeighbour = this.showingNeighbour;
+        newObj.ans = this.ans;
+
+        return newObj;
+    }
+
+    checkAnswer(ans) {
+        this.correct = +ans === this.ans;
+        this.solved = true;
+
+        return this.correct;
+    }
+
+    toString() {
+        let txt = "Skriv in den saknade talgrannen: <br>";
+
+        txt += this.solved ? (+this.i1 - 1) + " " + this.i1 + " " + (+this.i1 + 1) :
+               this.showingNeighbour > this.i1 ? "_ " + this.i1 + " " + this.showingNeighbour :
+               this.showingNeighbour + " " + this.i1 + " _";
+
+        return txt + "<br>";
+    }
+}
