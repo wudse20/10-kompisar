@@ -52,7 +52,7 @@ class TenBuddiesQuestion extends Question {
     toString() {
         let text = isNaN(this.ans) ? "Tiokompis till " + this.i1 + " är _" :
                                      "Tiokompis till " + this.i1 + " är " +
-                                     (10 - +this.i1) + (this.checkAnswer(this.ans) ? ": Rätt" : ": Fel");
+                                     (10 - +this.i1) + (this.checkAnswer(this.ans) ? ": Du svarade rätt" : ": Du svarade fel (" + this.ans + ")");
         return text;
     }
 }
@@ -90,7 +90,7 @@ class AddQuestion extends Question {
 
     toString() {
         let text = this.solved ? this.i1 + " + " + (parseInt(this.ans) - parseInt(this.i1)) +
-                                 " = " + this.ans + (this.correct ? ": Rätt" : ": Fel") :
+                                 " = " + this.ans + (this.correct ? ": Du svarade rätt" : ": Du svarade fel (" + this.ans + ")") :
                                  this.i1 + " + _ = " + this.ans;
         return text;
     }
@@ -140,7 +140,7 @@ class SubQuestion extends Question {
     toString() {
         let text = isNaN(this.ans) ? this.i1 + " - " + this.i2 + " = _" :
                                 this.i1 + " - " + this.i2 + " = " + (parseInt(this.i1) - parseInt(this.i2)) +
-                                (this.checkAnswer(this.ans) ? ": Rätt" : ": Fel");
+                                (this.checkAnswer(this.ans) ? ": Du svarade rätt" : ": Du svarade fel (" + this.ans + ")");
         return text;
     }
 }
@@ -148,6 +148,7 @@ class SubQuestion extends Question {
 class DoubleQuestion extends Question {
     constructor() {
         super();
+        this.ans = NaN;
     }
 
     generate(max) {
@@ -164,11 +165,12 @@ class DoubleQuestion extends Question {
     checkAnswer(ans) {
         this.solved = true;
         this.correct = !isNaN(ans) && (+ans / 2) === +this.i1;
+        this.ans = ans;
         return this.correct;
     }
 
     toString() {
-        let text = this.solved ? (+this.i1 * 2) + " är dubbelt så stort som " + this.i1 + (this.correct ? ": Rätt" : ": Fel") :
+        let text = this.solved ? (+this.i1 * 2) + " är dubbelt så stort som " + this.i1 + (this.correct ? ": Du svarade rätt" : ": Du svarade fel (" + this.ans + ")") :
                                  "_ är dubbelt så stort som " + this.i1;
         return text;
     }
@@ -204,7 +206,7 @@ class HalfQuestion extends Question {
 
     toString() {
         let ans = +this.i1 / 2;
-        let text = this.solved ? ans +  " är hälften så stort som " + this.i1 + (this.correct ? ": Rätt" : ": Fel") :
+        let text = this.solved ? ans +  " är hälften så stort som " + this.i1 + (this.correct ? ": Du svarade rätt" : ": Du svarade fel (" + this.ans + ")") :
                                  "_ är hälften så stort som " + this.i1;
         return text;
     }
@@ -275,6 +277,7 @@ const alphabet = "abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄ
 class SymetiryQuestion extends Question {
     constructor() {
         super();
+        this.ans = "";
     }
 
     generate(max) {
@@ -291,12 +294,14 @@ class SymetiryQuestion extends Question {
     checkAnswer(ans) {
         this.correct = ans == m.get(this.letter);
         this.solved = true;
+        this.ans = ans;
         return this.correct;
     }
 
     toString() {
+        let ans = this.ans ? "ja" : "nej";
         let string = "Är bokstaven: '" + this.letter + "' symetrisk?"
-        return string + (this.solved ? m.get(this.letter) ? " Ja" : " Nej" : "") + (this.solved ? this.correct ? ": Rätt" : ": Fel" : "");
+        return string + (this.solved ? m.get(this.letter) ? " Ja" : " Nej" : "") + (this.solved ? this.correct ? ": Du svarade rätt" : ": Du svarade fel (" + ans + ")" : "");
     }
 }
 
@@ -305,6 +310,7 @@ class NeighbourQuestion extends Question {
         super();
         this.showingNeighbour = 0;
         this.ans = NaN;
+        this.pAns = NaN;
     }
 
     generate(max) {
@@ -325,6 +331,7 @@ class NeighbourQuestion extends Question {
     }
 
     checkAnswer(ans) {
+        this.pAns = ans;
         this.correct = +ans === this.ans;
         this.solved = true;
 
@@ -334,7 +341,7 @@ class NeighbourQuestion extends Question {
     toString() {
         let txt = "Skriv in den saknade talgrannen: ";
 
-        txt += this.solved ? (+this.i1 - 1) + " " + this.i1 + " " + (+this.i1 + 1) :
+        txt += this.solved ? (+this.i1 - 1) + " " + this.i1 + " " + (+this.i1 + 1)  + (this.correct ? ": Du svarade rätt" : ": Du svarade fel (" + this.pAns + ")") :
                this.showingNeighbour > this.i1 ? "<br>_ " + this.i1 + " " + this.showingNeighbour :
                "<br>" + this.showingNeighbour + " " + this.i1 + " _";
 
