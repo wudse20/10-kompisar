@@ -6,6 +6,18 @@ let count = 0;
 let correct = 0;
 
 function init(length, max) {
+    let ten = document.getElementById("ten").checked;
+    let add = document.getElementById("add").checked;
+    let sub = document.getElementById("sub").checked;
+    let doub = document.getElementById("doub").checked;
+    let sym = document.getElementById("sym").checked;
+    let neigh = document.getElementById("neigh").checked;
+
+    if (!ten && !add && !sub && !doub && !sym && !neigh) {
+        alert("Du måste välja minst en kategori.");
+        return;
+    }
+
     let r1 = document.getElementById("row-1");
     let r2 = document.getElementById("row-2");
     let r3 = document.getElementById("row-3");
@@ -28,27 +40,43 @@ function init(length, max) {
 
             switch (num % 7) {
                 case 0:
-                    questions.push(new TenBuddiesQuestion().generate(max));
-                    break;
+                    if (ten) {
+                        questions.push(new TenBuddiesQuestion().generate(max));
+                        break;
+                    }
                 case 1:
-                    questions.push(new AddQuestion().generate((num % 2 == 0) ? max : +max * 2));
-                    break;
+                    if (add) {
+                        questions.push(new AddQuestion().generate((num % 2 == 0) ? max : +max * 2));
+                        break;
+                    }
                 case 2:
-                    questions.push(new SubQuestion().generate(max));
-                    break;
+                    if (sub) {
+                        questions.push(new SubQuestion().generate(max));
+                        break;
+                    }
                 case 3:
-                    questions.push(new HalfQuestion().generate(max));
-                    break;
+                    if (doub) {
+                        questions.push(new HalfQuestion().generate(max));
+                        break;
+                    }
                 case 4:
-                    questions.push(new DoubleQuestion().generate(max));
-                    break;
+                    if (doub) {
+                        questions.push(new DoubleQuestion().generate(max));
+                        break;
+                    }
                 case 5:
-                    // NaN since question type doesn't take a max value.
-                    questions.push(new SymetiryQuestion().generate(NaN));
-                    break;
+                    if (sym) {
+                        // NaN since question type doesn't take a max value.
+                        questions.push(new SymetiryQuestion().generate(NaN));
+                        break;
+                    }
                 case 6:
-                    questions.push(new NeighbourQuestion().generate(100));
-                    break;
+                    if (neigh) {
+                        questions.push(new NeighbourQuestion().generate(100));
+                        break;
+                    }
+                default:
+                    i--;
             }
         }
     } else {
@@ -60,6 +88,15 @@ function init(length, max) {
     document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count].toString();
 
     startTimer();
+}
+
+function disableCheckboxes(status) {
+    document.getElementById("ten").disabled = status;
+    document.getElementById("add").disabled = status;
+    document.getElementById("sub").disabled = status;
+    document.getElementById("doub").disabled = status;
+    document.getElementById("sym").disabled = status;
+    document.getElementById("neigh").disabled = status;
 }
 
 function swapInputType() {
@@ -127,9 +164,11 @@ function endGame() {
         let res = confirm("Vill du försöka igen med de som blev fel?");
         btn.innerHTML = res ? "Försök igen" : "Stata spelet";
         errorMode = res;
+        disableCheckboxes(res);
     } else {
         errorMode = false;
         btn.innerHTML = "Starta spelet";
+        disableCheckboxes(false);
     }
 }
 
