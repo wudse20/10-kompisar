@@ -4,6 +4,7 @@ function swapPage(path) {
 
 function startGame() {
     let ten = document.getElementById("10");
+    let ten2 = document.getElementById("10-2");
     let add = document.getElementById("add");
     let sub = document.getElementById("sub");
     let doubHalf = document.getElementById("doubHalf");
@@ -13,6 +14,8 @@ function startGame() {
     
     if (ten.checked)
         swapPage(".\\html\\10Buddies.html");
+    else if (ten2.checked)
+        swapPage(".\\html\\10Buddies2.html");
     else if (add.checked)
         swapPage(".\\html\\add.html");
     else if (sub.checked)

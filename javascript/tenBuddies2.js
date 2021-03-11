@@ -15,7 +15,7 @@ function init(length) {
     r2.style.display = "block";
     r3.style.display = "block";
     r4.style.display = "none";
-    
+
     count = 0;
     correct = 0;
 
@@ -24,7 +24,7 @@ function init(length) {
         errors = [];
 
         for (let i = 0; i < length; i++) {
-            questions.push(new TenBuddiesQuestion(false).generate(10));
+            questions.push(new TenBuddiesQuestion(true).generate(10));
         }
     } else {
         questions = errors;
@@ -49,7 +49,7 @@ function tenBuddies(value) {
         correct++;
     else
         errors.push(questions[count].clone());
-    
+
     if (++count < questions.length) {
         document.getElementById("question").innerHTML = "Fråga " + (count + 1) + ": " + questions[count].toString();
     } else {

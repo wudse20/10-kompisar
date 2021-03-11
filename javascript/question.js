@@ -28,19 +28,46 @@ class Question {
 }
 
 class TenBuddiesQuestion extends Question {
-    constructor() {
+    constructor(isHardMode) {
         super()
         this.ans = NaN;
+        this.isHardMode = isHardMode;
+        this.message = null;
     }
 
     generate(max) {
-        this.i1 = generateRandomNumber(max) + 1;
+        if (this.isHardMode) {
+            let num1 = 0;
+            let num2 = 0;
+            switch (generateRandomNumber(100) % 2) {
+                case 0:
+                    num1 = generateRandomNumber(max) + 1;
+                    num2 = generateRandomRange(0, +num1);
+                    this.i1 = +num1 - +num2;
+                    this.message = num1 + " - " + num2;
+                    break;
+                case 1:
+                    this.i1 = generateRandomNumber(max) + 1;
+                    num1 = generateRandomNumber(this.i1) + 1;
+                    num2 = +this.i1 - +num1;
+                    this.message = num1 + " + " + num2;
+                    break;
+            }
+
+            console.log(this.message);
+        } else {
+            this.i1 = generateRandomNumber(max) + 1;
+            this.message = this.i1;
+        }
+
         return this;
     }
     
     clone() {
         let newObj = new TenBuddiesQuestion();
         newObj.i1 = this.i1;
+        newObj.isHardMode = this.isHardMode;
+        newObj.message = this.message
         return newObj;
     }
 
@@ -50,8 +77,8 @@ class TenBuddiesQuestion extends Question {
     }
 
     toString() {
-        let text = isNaN(this.ans) ? "Tiokompis till " + this.i1 + " är _" :
-                                     "Tiokompis till " + this.i1 + " är " +
+        let text = isNaN(this.ans) ? "Tiokompis till " + this.message + " är _" :
+                                     "Tiokompis till " + this.message + " är " +
                                      (10 - +this.i1) + (this.checkAnswer(this.ans) ? ": Du svarade rätt" : ": Du svarade fel (" + this.ans + ")");
         return text;
     }
