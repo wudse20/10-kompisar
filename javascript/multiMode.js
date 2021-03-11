@@ -41,7 +41,7 @@ function init(length, max) {
             switch (num % 7) {
                 case 0:
                     if (ten) {
-                        questions.push(new TenBuddiesQuestion().generate(max));
+                        questions.push(new TenBuddiesQuestion(num % 2).generate(max));
                         break;
                     }
                 case 1:
