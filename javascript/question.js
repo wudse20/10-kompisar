@@ -375,3 +375,55 @@ class NeighbourQuestion extends Question {
         return txt;
     }
 }
+
+class ClockAnswer {
+    constructor(min, hour) {
+        this.min = min;
+        this.hour = hour;
+    }
+}
+
+class ClockQuestion extends Question {
+    constructor() {
+        super();
+        this.minute = NaN;
+        this.hour = NaN;
+    }
+
+    generate(max) {
+        switch(generateRandomNumber(1000) % 4) {
+            case 0:
+                this.minute = 0;
+                break;
+            case 1:
+                this.minute = 15;
+                break;
+            case 2:
+                this.minute = 30;
+                break;
+            case 3:
+                this.minute = 45;
+                break;
+        }
+
+        this.hour = generateRandomRange(1, 12);
+        return this;
+    }
+
+    clone() {
+        let newObject = new ClockQuestion();
+        newObject.minute = this.minute;
+        newObject.hour = this.hour;
+        return newObject;
+    }
+
+    checkAnswer(ans) {
+        if (ans instanceof ClockAnswer) {
+            this.solved = true;
+            this.correct = ans.hour == this.hour && ans.min == this.minute;
+            return this.correct;
+        } else {
+            return false;
+        }
+    }
+}
