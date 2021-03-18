@@ -426,4 +426,8 @@ class ClockQuestion extends Question {
             return false;
         }
     }
+
+    toString() {
+        return `${this.hour}:${this.minute}`
+    }
 }

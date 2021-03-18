@@ -86,7 +86,7 @@ function drawClock(mins, secs) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Minutes
-    let minPos = toPosMin(mins, canvas.width / 2 - 1);
+    let minPos = toPosMin(mins, canvas.width / 2 - 1, canvas);
 
     // Draws line
     ctx.strokeStyle = minuteColor;
