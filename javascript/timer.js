@@ -140,25 +140,25 @@ function drawClock(mins, secs) {
 }
 
 function resizeCanvasToDisplaySize(canvas) {
-    let w = canvas.width, h = canvas.height;
+    // Lookup the size the browser is displaying the canvas in CSS pixels.
+    const displayWidth  = canvas.clientWidth;
+    const displayHeight = canvas.clientHeight;
 
-    // scale the canvas by window.devicePixelRatio
-    canvas.setAttribute('width', w*window.devicePixelRatio);
-    canvas.setAttribute('height', h*window.devicePixelRatio);
+    // Check if the canvas is not the same size.
+    const needResize = canvas.width  !== displayWidth ||
+                       canvas.height !== displayHeight;
 
-    // use css to bring it back to regular size
-    canvas.setAttribute('style', 'width="'+w+'"; height="'+h+'";')
-
-    // set the scale of the context
-    canvas.getContext('2d').scale(window.devicePixelRatio, window.devicePixelRatio);
+    if (needResize) {
+      // Make the canvas the same size
+      canvas.width  = displayWidth;
+      canvas.height = displayHeight;
+    }
 }
 
 function initCanvas() {
     canvas = document.getElementById("time");
     ctx = canvas.getContext("2d");
-
-    if (window.devicePixelRatio !== 1)
-        resizeCanvasToDisplaySize(canvas);
+    resizeCanvasToDisplaySize(canvas);
 }
 
 window.onload = function() {
