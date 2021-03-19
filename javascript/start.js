@@ -11,6 +11,7 @@ function startGame() {
     let sym = document.getElementById("sym");
     let neighbours = document.getElementById("neighbours");
     let multiMode = document.getElementById("multiMode");
+    let clock = document.getElementById("clock");
     
     if (ten.checked)
         swapPage(".\\html\\10Buddies.html");
@@ -28,6 +29,8 @@ function startGame() {
         swapPage(".\\html\\neighbours.html");
     else if (multiMode.checked)
         swapPage(".\\html\\multiMode.html");
+    else if (clock.checked)
+        swapPage(".\\html\\clock.html");
     else
         console.log("Wierd input form user");
 }
