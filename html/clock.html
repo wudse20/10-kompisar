@@ -10,26 +10,30 @@
         <script src="../javascript/game.js"></script>
         <script src="../javascript/question.js"></script>
         <script src="../javascript/clock.js"></script>
+        <script src="../javascript/timer.js"></script>
         <script lang="js">
             function swapPage(path) {
                 window.location = path;
             }
         </script>
         <div class="row-1" id="row-1">
-            <button onclick="init(10)" id="btnStart">Starta Spelet</button>
-            <button onclick="swapPage('..\\index.html')">Tillbaka till startsida</button>
+            <div class="col-1">
+                <button onclick="init(10)" id="btnStart">Starta Spelet</button>
+                <button onclick="swapPage('..\\index.html')">Tillbaka till startsida</button>
+            </div>
         </div>
         <div class="row-2" id="row-2">
             <div class="col-1">
-                <h2>Vad är klockan?</h2>
-                <canvas id="gameClock" width="100" height="100">Canvas not supported by browser.</canvas>
+                <canvas id="gameClock" width="100px" height="100px">Canvas not supported by browser.</canvas>
             </div>
             <div class="col-2">
+                <canvas id="time" width="100" height="100">Canvas not supported by browser</canvas>
+                <p id="timeLabel">Tid 00:00:00</p>
             </div>
         </div>
         <div class="row-3" id="row-3">
             <div class="col-1">
-                <form>
+                <form class="clockForm">
                     <label for="times">Klockan är </label>
                     <select name="times">
                         <option value="0">prick </option>

@@ -34,6 +34,10 @@
     background-color: dodgerblue;
 }
 
+[class *= "col-"] {
+    border: 1px solid red;
+}
+
 button {
     color: white;
     background-color: rgb(95, 94, 94);
@@ -144,10 +148,31 @@ input[type=radio] {
     padding-left: 2%;
 }
 
-canvas {
+.col-1 canvas {
     border: 1px solid black;
-    width: 40%;
-    height: 40%;
+    width: 75%;
+    height: 75%;
+}
+
+.clockForm label {
+    font-family: sans-serif;
+    font-weight: bolder;
+    display: inline-block;
+    transform: scale(1.25);
+    transform: translateY(-1);
+}
+
+.clockForm select {
+    border: 2px solid black;
+    font-weight: bolder;
+    transform: scale(1.25);
+    margin-left: 2%;
+    display: inline-block;
+}
+
+.clockForm input {
+    margin-left: 3%;
+    transform: scale(1.25);
 }
 
 @media only screen and (max-width: 1280px) and (min-width: 961px) {
