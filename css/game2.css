@@ -92,3 +92,18 @@ footer p{
     margin-top: 2%;
     margin-left: -1%;
 }
+
+/* Responsive part */
+@media only screen and (max-width: 1280px) {
+    .clockForm label {
+        transform: scale(1.1);
+    }
+    
+    .clockForm select {
+        transform: scale(1.1);
+    }
+    
+    .clockForm input {
+        transform: scale(1.1);
+    }
+}
