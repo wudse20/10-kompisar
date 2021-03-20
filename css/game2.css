@@ -50,11 +50,26 @@ footer p{
     width: 100%;
 }
 
+
+.row-2 .col-1, .row-2 .col-2 {
+    width: 50%;
+}
+
+/* Header */
 .row-1 .col-1 h1 {
     font-size: 4em;
     text-align: center;
 }
 
-.row-2 .col-1, .row-2 .col-2 {
+/* Timer & Game */
+.row-2 canvas {
     width: 50%;
+    height: 50%;
+    margin-left: 25%;
+    border: 1px solid black;
+}
+
+.label {
+    font-size: 2em;
+    text-align: center;
 }
