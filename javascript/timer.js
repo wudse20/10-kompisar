@@ -62,16 +62,16 @@ function endTimer() {
     return formatTime(elapsedTime);
 }
 
-function toPosMin(min, radius) {
+function toPosMin(min, radius, _canvas) {
     let t = 2 * Math.PI * (min - 15) / 60;
-    let x = (canvas.width / 2 + radius * Math.cos(t));
-    let y = (canvas.height / 2 + radius * Math.sin(t));
+    let x = (_canvas.width / 2 + radius * Math.cos(t));
+    let y = (_canvas.height / 2 + radius * Math.sin(t));
 
     return new Pos(x, y);
 }
 
-function toPosSec(sec, radius) {
-    return toPosMin(sec, radius);
+function toPosSec(sec, radius, _canvas) {
+    return toPosMin(sec, radius, _canvas);
 }
 
 function drawClock(mins, secs) {
@@ -86,7 +86,7 @@ function drawClock(mins, secs) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Minutes
-    let minPos = toPosMin(mins, canvas.width / 2 - 1);
+    let minPos = toPosMin(mins, canvas.width / 2 - 1, canvas);
 
     // Draws line
     ctx.strokeStyle = minuteColor;
@@ -99,7 +99,7 @@ function drawClock(mins, secs) {
     ctx.lineWidth = 2;
 
     // Seconds
-    let secPos = toPosSec(secs, canvas.width / 2 - 1);
+    let secPos = toPosSec(secs, canvas.width / 2 - 1, canvas);
 
     // Draws line
     ctx.strokeStyle = secondsColor;

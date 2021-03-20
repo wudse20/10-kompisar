@@ -1,0 +1,113 @@
+/* Clock */
+.clock {
+    background-color: steelblue;
+}
+
+/* Footer */
+footer {
+    margin-top: 45%;
+}
+
+footer p{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: .75em;
+    margin-top: 0%;
+    padding-top: 0px;
+}
+
+/* Input for clock game */
+label {
+    font-family: sans-serif;
+    font-weight: bolder;
+    display: inline-block;
+    transform: scale(1.25);
+    transform: translateY(-1);
+}
+
+select {
+    border: 2px solid black;
+    font-weight: bolder;
+    transform: scale(1.25);
+    margin-left: 2%;
+    display: inline-block;
+}
+
+input {
+    margin-left: 3%;
+    transform: scale(1.25);
+}
+
+/* Grid layout */
+* {
+    box-sizing: border-box;
+}
+  
+[class *= "col-"] {
+    float: left;
+    padding: 5%;
+    width: 100%;
+}
+
+
+.row-2 .col-1, .row-2 .col-2 {
+    width: 50%;
+}
+
+/* Header */
+.row-1 .col-1 h1 {
+    font-size: 4em;
+    text-align: center;
+}
+
+/* Timer & Game */
+.row-2 canvas {
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+}
+
+.label {
+    font-size: 2em;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+.label2 {
+    font-size: 2em;
+    font-family: sans-serif;
+}
+
+.button {
+    border: 1px solid black;
+    padding: 2%;
+    color: black;
+    font-size: 2em;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.button:hover {
+    background-color: indigo;
+}
+
+/* Submit button */
+.row-3 .col-1 .button {
+    margin-top: 2%;
+    margin-left: 10%;
+}
+
+/* Responsive part */
+@media only screen and (max-width: 1280px) {
+    label {
+        transform: scale(1.1);
+    }
+    
+    select {
+        transform: scale(1.1);
+    }
+    
+    input {
+        transform: scale(1.1);
+    }
+}

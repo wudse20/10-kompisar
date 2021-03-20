@@ -375,3 +375,81 @@ class NeighbourQuestion extends Question {
         return txt;
     }
 }
+
+class ClockAnswer {
+    constructor(hour, min) {
+        this.hour = hour;
+        this.min = min;
+    }
+
+    equals(other) {
+        return other instanceof ClockAnswer &&
+               this.min == other.min &&
+               this.hour == other.hour;
+    }
+
+    toString(addTwelve) {
+        let h = addTwelve ? +this.hour + 12 : this.hour;
+        return `${h < 10 ? "0" + h : h} : ${this.min < 10 ? "0" + this.min : this.min}`;
+    }
+}
+
+class ClockQuestion extends Question {
+    constructor() {
+        super();
+        this.minute = NaN;
+        this.hour = NaN;
+        this.addTwelve = false;
+        // To prevent nullpointererror, or whatever it's called in js.
+        this.ans = new ClockAnswer(-1, -1);
+    }
+
+    generate(max) {
+        switch(generateRandomNumber(1000) % 4) {
+            case 0:
+                this.minute = 0;
+                break;
+            case 1:
+                this.minute = 15;
+                break;
+            case 2:
+                this.minute = 30;
+                break;
+            case 3:
+                this.minute = 45;
+                break;
+        }
+
+        this.hour = generateRandomRange(1, 12);
+        this.addTwelve = Math.random() < .5;
+        return this;
+    }
+
+    clone() {
+        let newObject = new ClockQuestion();
+        newObject.minute = this.minute;
+        newObject.hour = this.hour;
+        newObject.addTwelve = this.addTwelve;
+        return newObject;
+    }
+
+    checkAnswer(ans) {
+        this.solved = true;
+
+        if (ans instanceof ClockAnswer) {
+            this.correct = ans.equals(new ClockAnswer(this.hour, this.minute));
+            this.ans = ans;
+            return this.correct;
+        } else {
+            this.ans = null;
+            return this.correct;
+        }
+    }
+
+    toString() {
+        let time = `${this.addTwelve ? +this.hour + 12 : this.hour.toString().length < 2 ? "0" + this.hour : this.hour} :
+                    ${this.minute.toString().length < 2 ? "0" + this.minute : this.minute}`;
+        let message = `${this.solved ? (this.correct ? ", Du svarade rätt!" : `, Du svarade fel (${this.ans.toString(this.addTwelve)})`) : ""}`;
+        return time + message;
+    }
+}
