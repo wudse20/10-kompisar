@@ -10,6 +10,15 @@
         <!-- Scripts -->
         <script src="../javascript/timer.js"></script>
         <script src="../javascript/clock.js"></script>
+        <script src="../javascript/game.js"></script>
+        <script src="../javascript/question.js"></script>
+        <script lang="js">
+            function swapPage(location) {
+                function swapPage(path) {
+                    window.location = path;
+                }
+            }
+        </script>
         <div class="grid-container">
             <!-- Header -->
             <div class="row-1">
@@ -37,19 +46,21 @@
                     <form class="clockForm">
                         <label for="times">Klockan är </label>
                         <select name="times">
-                            <option value="0">prick </option>
-                            <option value="15">kvart över </option>
-                            <option value="30">halv </option>
-                            <option value="45">kvart i </option>
+                            <option value="0">prick</option>
+                            <option value="15">kvart över</option>
+                            <option value="30">halv</option>
+                            <option value="45">kvart i</option>
                         </select>
                         <input pattern="[0-9]*" type="number" step="1" id="inp" value="">
                     </form>
+                    <button class="button" onclick="console.log('submitted')">Svara</button>
                 </div>
             </div>
             <!-- Menu row -->
             <div class="row-4" id="row-4">
                 <div class="col-1">
-                    <button onclick="startTimer()";>Start</button>
+                    <button class="button" onclick="startTimer()">Starta Spelet</button>
+                    <button class="button" onclick="swapPage('../index.html')">Tillbaka till startsidan</button>
                 </div>
             </div>
             <!-- Footer -->

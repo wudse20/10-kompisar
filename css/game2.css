@@ -66,10 +66,28 @@ footer p{
     width: 50%;
     height: 50%;
     margin-left: 25%;
-    border: 1px solid black;
 }
 
 .label {
     font-size: 2em;
     text-align: center;
+}
+
+.button {
+    border: 1px solid black;
+    padding: 2%;
+    color: black;
+    font-size: 2em;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.button:hover {
+    background-color: indigo;
+}
+
+/* Submit button */
+.row-3 .col-1 .button {
+    margin-top: 2%;
+    margin-left: -1%;
 }
