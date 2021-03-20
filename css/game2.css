@@ -17,7 +17,7 @@ footer p{
 }
 
 /* Input for clock game */
-.clockForm label {
+label {
     font-family: sans-serif;
     font-weight: bolder;
     display: inline-block;
@@ -25,7 +25,7 @@ footer p{
     transform: translateY(-1);
 }
 
-.clockForm select {
+select {
     border: 2px solid black;
     font-weight: bolder;
     transform: scale(1.25);
@@ -33,7 +33,7 @@ footer p{
     display: inline-block;
 }
 
-.clockForm input {
+input {
     margin-left: 3%;
     transform: scale(1.25);
 }
@@ -44,7 +44,6 @@ footer p{
 }
   
 [class *= "col-"] {
-    border: 1px solid red;
     float: left;
     padding: 5%;
     width: 100%;
@@ -74,6 +73,11 @@ footer p{
     font-family: sans-serif;
 }
 
+.label2 {
+    font-size: 2em;
+    font-family: sans-serif;
+}
+
 .button {
     border: 1px solid black;
     padding: 2%;
@@ -90,20 +94,20 @@ footer p{
 /* Submit button */
 .row-3 .col-1 .button {
     margin-top: 2%;
-    margin-left: -1%;
+    margin-left: 10%;
 }
 
 /* Responsive part */
 @media only screen and (max-width: 1280px) {
-    .clockForm label {
+    label {
         transform: scale(1.1);
     }
     
-    .clockForm select {
+    select {
         transform: scale(1.1);
     }
     
-    .clockForm input {
+    input {
         transform: scale(1.1);
     }
 }

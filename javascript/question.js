@@ -377,9 +377,20 @@ class NeighbourQuestion extends Question {
 }
 
 class ClockAnswer {
-    constructor(min, hour) {
-        this.min = min;
+    constructor(hour, min) {
         this.hour = hour;
+        this.min = min;
+    }
+
+    equals(other) {
+        return other instanceof ClockAnswer &&
+               this.min == other.min &&
+               this.hour == other.hour;
+    }
+
+    toString(addTwelve) {
+        let h = addTwelve ? +this.hour + 12 : this.hour;
+        return `${h < 10 ? "0" + h : h} : ${this.min < 10 ? "0" + this.min : this.min}`;
     }
 }
 
@@ -389,6 +400,8 @@ class ClockQuestion extends Question {
         this.minute = NaN;
         this.hour = NaN;
         this.addTwelve = false;
+        // To prevent nullpointererror, or whatever it's called in js.
+        this.ans = new ClockAnswer(-1, -1);
     }
 
     generate(max) {
@@ -421,16 +434,22 @@ class ClockQuestion extends Question {
     }
 
     checkAnswer(ans) {
+        this.solved = true;
+
         if (ans instanceof ClockAnswer) {
-            this.solved = true;
-            this.correct = ans.hour == this.hour && ans.min == this.minute;
+            this.correct = ans.equals(new ClockAnswer(this.hour, this.minute));
+            this.ans = ans;
             return this.correct;
         } else {
-            return false;
+            this.ans = null;
+            return this.correct;
         }
     }
 
     toString() {
-        return `${this.addTwelve ? +this.hour + 12 : this.hour} : ${this.minute}`
+        let time = `${this.addTwelve ? +this.hour + 12 : this.hour.toString().length < 2 ? "0" + this.hour : this.hour} :
+                    ${this.minute.toString().length < 2 ? "0" + this.minute : this.minute}`;
+        let message = `${this.solved ? (this.correct ? ", Du svarade rätt!" : `, Du svarade fel (${this.ans.toString(this.addTwelve)})`) : ""}`;
+        return time + message;
     }
 }

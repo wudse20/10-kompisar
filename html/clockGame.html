@@ -44,28 +44,31 @@
             </div>
             <div class="row-3" id="row-3">
                 <div class="col-1">
-                    <form class="clockForm">
-                        <label for="times">Klockan är </label>
-                        <select name="times">
-                            <option value="0">prick</option>
-                            <option value="15">kvart över</option>
-                            <option value="30">halv</option>
-                            <option value="45">kvart i</option>
-                        </select>
-                        <input pattern="[0-9]*" type="number" step="1" id="inp" value="">
-                    </form>
-                    <button class="button" onclick="console.log('submitted')">Svara</button>
+                    <label for="times">Klockan är </label>
+                    <select name="times" id="times">
+                        <option value="0">prick</option>
+                        <option value="15">kvart över</option>
+                        <option value="30">halv</option>
+                        <option value="45">kvart i</option>
+                    </select>
+                    <input pattern="[0-9]*" type="number" step="1" id="inp" value="">
+                    <button class="button" onclick="submit()">Svara</button>
                 </div>
             </div>
             <!-- Menu row -->
             <div class="row-4" id="row-4">
                 <div class="col-1">
-                    <button class="button" onclick="startTimer()">Starta Spelet</button>
+                    <button class="button" onclick="init(10)" id="btnStart">Starta Spelet</button>
                     <button class="button" onclick="swapPage('../index.html')">Tillbaka till startsidan</button>
                 </div>
             </div>
+            <div class="row-5" id="row-5">
+                <div class="col-1">
+                    <p id="res" class="label2"></p>
+                </div>
+            </div>
             <!-- Footer -->
-            <div class="row-5">
+            <div class="row-6">
                 <div class="col-1">
                     <footer>
                         <p>Ansvarig utgivare: Anton Skorup</p>
