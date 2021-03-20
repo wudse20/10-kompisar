@@ -388,6 +388,7 @@ class ClockQuestion extends Question {
         super();
         this.minute = NaN;
         this.hour = NaN;
+        this.addTwelve = false;
     }
 
     generate(max) {
@@ -407,6 +408,7 @@ class ClockQuestion extends Question {
         }
 
         this.hour = generateRandomRange(1, 12);
+        this.addTwelve = Math.random() < .5;
         return this;
     }
 
@@ -414,6 +416,7 @@ class ClockQuestion extends Question {
         let newObject = new ClockQuestion();
         newObject.minute = this.minute;
         newObject.hour = this.hour;
+        newObject.addTwelve = this.addTwelve;
         return newObject;
     }
 
@@ -428,6 +431,6 @@ class ClockQuestion extends Question {
     }
 
     toString() {
-        return `${this.hour}:${this.minute}`
+        return `${this.addTwelve ? +this.hour + 12 : this.hour} : ${this.minute}`
     }
 }

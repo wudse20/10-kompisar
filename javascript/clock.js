@@ -17,7 +17,7 @@ function init(length) {
 }
 
 function getRelativeHour(min) {
-    return Math.floor(min / 12);
+    return min / 12;
 }
 
 function draw(question) {
@@ -25,24 +25,22 @@ function draw(question) {
     if (!(question instanceof ClockQuestion))
         return;
 
+    // Sets the text
+    document.getElementById("clockLabel").innerHTML = question.toString();
+
     // Initalizes the clock canvas.
     initClockCanvas();
 
     // Gets the time
     let hour = question.hour;
     let min = question.minute;
+    let radius = clockCanvas.width / 3;
 
     // Calculates the middle pos.
     let middle = new Pos(clockCanvas.width / 2, clockCanvas.height / 2);
 
-    // Circle
-    clockCtx.strokeStyle = "black";
-    clockCtx.beginPath();
-    clockCtx.arc(middle.getX(), middle.getY(), Math.max(clockCanvas.width / 2 - 1, 0), 0, Math.PI * 2);
-    clockCtx.stroke();
-
     // Minutes
-    let minPos = toPosMin(min, clockCanvas.width / 2 - 1, clockCanvas); // From timer.js
+    let minPos = toPosMin(min, radius, clockCanvas); // From timer.js
 
     // Draws line
     clockCtx.lineWidth = 2;
@@ -53,7 +51,7 @@ function draw(question) {
     clockCtx.stroke();
 
     // Hour
-    let hourPos = toPosMin(hour * 5 + getRelativeHour(min), clockCanvas.width / 2 - 1, clockCanvas); // From timer.js
+    let hourPos = toPosMin(hour * 5 + getRelativeHour(min), radius, clockCanvas); // From timer.js
 
     // Draws line
     clockCtx.lineWidth = 3;
@@ -62,6 +60,16 @@ function draw(question) {
     clockCtx.moveTo(middle.getX(), middle.getY());
     clockCtx.lineTo(hourPos.getX(), hourPos.getY());
     clockCtx.stroke();
+
+    // Draws smaller lines
+    for (let i = 1; i <= 12; i++) {
+        // Gets the pos.
+        let pos = toPosMin(i * 5 + getRelativeHour(0), radius, clockCanvas); // From timer.js 
+
+        // Draws the line
+        clockCtx.fillStyle = "black";
+        clockCtx.fillRect(pos.getX(), pos.getY(), 3, 3);
+    }
 }
 
 function hideGame() {
