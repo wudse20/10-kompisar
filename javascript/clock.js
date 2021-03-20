@@ -122,10 +122,10 @@ function draw(question) {
     clockCtx.stroke();
 
     // Hour
-    let hourPos = toPosMin(hour * 5 + getRelativeHour(min), radius, clockCanvas); // From timer.js
+    let hourPos = toPosMin(hour * 5 + getRelativeHour(min), 2 * radius / 3, clockCanvas); // From timer.js
 
     // Draws line
-    clockCtx.lineWidth = 3;
+    clockCtx.lineWidth = 4;
     clockCtx.strokeStyle = hourColor;
     clockCtx.beginPath();
     clockCtx.moveTo(middle.getX(), middle.getY());

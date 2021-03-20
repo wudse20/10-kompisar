@@ -110,4 +110,9 @@ input {
     input {
         transform: scale(1.1);
     }
+
+    .row-3 .col-1 {
+        padding-top: 0%;
+        margin-top: -9%;
+    }
 }
