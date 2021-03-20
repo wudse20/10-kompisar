@@ -1,0 +1,60 @@
+/* Clock */
+.clock {
+    background-color: steelblue;
+}
+
+/* Footer */
+footer {
+    margin-top: 45%;
+}
+
+footer p{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: .75em;
+    margin-top: 0%;
+    padding-top: 0px;
+}
+
+/* Input for clock game */
+.clockForm label {
+    font-family: sans-serif;
+    font-weight: bolder;
+    display: inline-block;
+    transform: scale(1.25);
+    transform: translateY(-1);
+}
+
+.clockForm select {
+    border: 2px solid black;
+    font-weight: bolder;
+    transform: scale(1.25);
+    margin-left: 2%;
+    display: inline-block;
+}
+
+.clockForm input {
+    margin-left: 3%;
+    transform: scale(1.25);
+}
+
+/* Grid layout */
+* {
+    box-sizing: border-box;
+}
+  
+[class *= "col-"] {
+    border: 1px solid red;
+    float: left;
+    padding: 5%;
+    width: 100%;
+}
+
+.row-1 .col-1 h1 {
+    font-size: 4em;
+    text-align: center;
+}
+
+.row-2 .col-1, .row-2 .col-2 {
+    width: 50%;
+}
